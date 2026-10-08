@@ -1,0 +1,8024 @@
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f4f2f6;
+  background: #050507;
+  font-synthesis: none;
+
+  --bg: #050507;
+  --panel: #080b10;
+  --panel2: #0c0e13;
+  --line: #20242b;
+  --line2: #2a2f37;
+  --muted: #8490a3;
+  --text: #f4f2f6;
+
+  --pink: #ff1fcb;
+  --pink2: #ff55dd;
+  --mag: #bd1fa8;
+  --cyan: #ff76e7;
+  --green: #e88ad8;
+  --yellow: #d96ac8;
+  --orange: #ff58c4;
+  --red: #ff2b9a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #050507;
+}
+
+body {
+  background: #050507;
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 1px solid var(--pink);
+  outline-offset: 2px;
+}
+
+.app {
+  min-height: 100vh;
+  background: #050507;
+}
+
+/* =========================
+   SUBTLE BACKGROUND GRID
+   ========================= */
+
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 31, 203, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 31, 203, 0.018) 1px, transparent 1px);
+
+  background-size: 64px 64px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    transparent 85%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    transparent 85%
+  );
+}
+
+/* =========================
+   SIDEBAR
+   ========================= */
+
+.sidebar {
+  width: 228px;
+  position: fixed;
+  inset: 0 auto 0 0;
+
+  background: linear-gradient(180deg, #050608, #030304 80%);
+  border-right: 1px solid #17191e;
+
+  padding: 18px 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 20;
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  padding: 2px 7px 19px;
+  border-bottom: 1px solid #17191e;
+}
+
+.brandmark {
+  width: 37px;
+  height: 37px;
+
+  border: 1px solid var(--pink);
+  color: var(--pink);
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 900;
+  font-size: 19px;
+
+  clip-path: polygon(
+    50% 0,
+    94% 25%,
+    94% 75%,
+    50% 100%,
+    6% 75%,
+    6% 25%
+  );
+
+  box-shadow: 0 0 20px rgba(255, 31, 203, 0.09);
+}
+
+.brand strong {
+  display: block;
+  letter-spacing: 0.08em;
+  font-size: 15px;
+}
+
+.brand strong span {
+  color: var(--pink);
+}
+
+.brand small {
+  display: block;
+  color: #677387;
+  font-size: 7px;
+  letter-spacing: 0.11em;
+  margin-top: 3px;
+}
+
+.env {
+  font-size: 8px;
+  color: #9ca7b8;
+  letter-spacing: 0.08em;
+  padding: 14px 8px;
+}
+
+.env i,
+.live i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  background: #6a7687;
+  margin-right: 7px;
+}
+
+.env i.ok,
+.live i {
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+}
+
+.navgroup {
+  margin-top: 7px;
+}
+
+.navgroup label {
+  display: block;
+  color: #4d5562;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  padding: 7px 10px;
+}
+
+.navgroup button {
+  width: 100%;
+
+  border: 1px solid transparent;
+  background: transparent;
+  color: #8e9aac;
+
+  padding: 10px;
+  border-radius: 7px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-align: left;
+  font-size: 11px;
+}
+
+.navgroup button:hover {
+  background: #0c0d10;
+  color: #f0eff4;
+  border-color: #22252b;
+}
+
+.navgroup button.active {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 31, 203, 0.15),
+    rgba(255, 31, 203, 0.025)
+  );
+
+  color: #fff;
+  border-color: #5d1d52;
+
+  box-shadow:
+    inset 3px 0 var(--pink),
+    0 0 20px rgba(255, 31, 203, 0.025);
+}
+
+.navgroup em {
+  margin-left: auto;
+  background: #301029;
+  color: #ff66de;
+
+  border-radius: 10px;
+  padding: 2px 7px;
+
+  font-style: normal;
+  font-size: 8px;
+}
+
+.sidebottom {
+  margin-top: auto;
+
+  border: 1px solid #20242b;
+  background: #08090c;
+
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.statusrow {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 8px;
+  color: #697689;
+
+  padding: 4px;
+}
+
+.statusrow b {
+  color: #697689;
+}
+
+.green {
+  color: var(--green) !important;
+}
+
+.version {
+  font-size: 7px;
+  color: #3d434d;
+  letter-spacing: 0.08em;
+  padding: 12px 5px 2px;
+}
+
+/* =========================
+   MAIN / TOPBAR
+   ========================= */
+
+.main {
+  margin-left: 228px;
+  min-height: 100vh;
+
+  position: relative;
+  z-index: 1;
+
+  background: #050507;
+}
+
+.topbar {
+  height: 64px;
+
+  border-bottom: 1px solid #191c22;
+  background: rgba(5, 5, 7, 0.96);
+
+  backdrop-filter: blur(16px);
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 20px;
+  gap: 16px;
+
+  position: sticky;
+  top: 0;
+  z-index: 15;
+}
+
+.crumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  min-width: 225px;
+  font-size: 12px;
+}
+
+.crumb span {
+  font-size: 8px;
+  color: #58677b;
+  letter-spacing: 0.1em;
+}
+
+.crumb b {
+  color: #30343c;
+}
+
+.crumb strong {
+  color: #e9e8ee;
+  font-size: 12px;
+}
+
+.search {
+  height: 36px;
+  max-width: 480px;
+  flex: 1;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 0 12px;
+
+  border: 1px solid #282c33;
+  background: #090a0d;
+
+  border-radius: 7px;
+  color: #66758a;
+}
+
+.search input {
+  flex: 1;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  color: #dfe5ec;
+  font-size: 11px;
+}
+
+.search kbd {
+  font-size: 8px;
+  color: #667286;
+
+  border: 1px solid #293038;
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+.topactions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconbtn,
+.ghost,
+.seg {
+  border: 1px solid #292d34;
+  background: #090a0d;
+  color: #a2adbd;
+
+  border-radius: 6px;
+  padding: 8px 11px;
+
+  font-size: 10px;
+}
+
+.seg.active {
+  border-color: #8c2275;
+  color: #fff;
+  background: rgba(255, 31, 203, 0.12);
+}
+
+.topactions select {
+  width: 190px;
+}
+
+.live {
+  font-size: 8px;
+  color: #94a0b0;
+}
+
+.avatar {
+  width: 29px;
+  height: 29px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: linear-gradient(135deg, var(--pink), #8f2cff);
+  color: #fff;
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+/* =========================
+   PAGE
+   ========================= */
+
+.page {
+  padding: 24px 18px 48px;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+.pageintro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 24px;
+  margin: 4px 0 20px;
+}
+
+.pageintro h1 {
+  font-size: 34px;
+  line-height: 1.05;
+
+  margin: 6px 0;
+
+  letter-spacing: -0.035em;
+}
+
+.pageintro p {
+  font-size: 13px;
+  color: #8290a4;
+
+  margin: 0;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  font-size: 8px;
+  letter-spacing: 0.17em;
+  color: #a74797;
+}
+
+.clockbox {
+  min-width: 210px;
+
+  border: 1px solid #321a30;
+  background: linear-gradient(180deg, #100910, #08090c);
+
+  padding: 12px 15px;
+  border-radius: 8px;
+
+  text-align: right;
+
+  box-shadow: 0 0 25px rgba(255, 31, 203, 0.035);
+}
+
+.clockbox span,
+.clockbox small {
+  display: block;
+
+  font-size: 7px;
+  color: #6e7b8e;
+  letter-spacing: 0.12em;
+}
+
+.clockbox strong {
+  display: block;
+
+  font: 700 23px ui-monospace, SFMono-Regular, monospace;
+  color: #fff;
+
+  margin: 4px 0;
+}
+
+.primary {
+  border: 1px solid var(--pink);
+
+  background: linear-gradient(
+    135deg,
+    #ff1fcb,
+    #a31bc4
+  );
+
+  color: #fff;
+
+  border-radius: 6px;
+  padding: 10px 14px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  box-shadow: 0 0 22px rgba(255, 31, 203, 0.09);
+}
+
+.primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 28px rgba(255, 31, 203, 0.15);
+}
+
+.sourcepill {
+  border: 1px solid #2b3038;
+  background: #090a0d;
+  color: #7f8ca0;
+
+  border-radius: 20px;
+  padding: 8px 11px;
+
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+
+/* =========================
+   STATS
+   ========================= */
+
+.statsgrid {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.statsgrid.seven {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.stat,
+.analyticStat {
+  position: relative;
+
+  min-height: 104px;
+
+  border: 1px solid #20252c;
+  background: linear-gradient(180deg, #090b0f, #07080b);
+
+  border-radius: 7px;
+  padding: 13px 14px;
+
+  overflow: hidden;
+}
+
+.stat::after {
+  content: "";
+
+  position: absolute;
+  inset: auto 0 0;
+
+  height: 2px;
+
+  background: var(--accent, var(--pink));
+  opacity: 0.75;
+}
+
+.stat.purple {
+  --accent: #b35bff;
+}
+
+.stat.red {
+  --accent: #ff4e72;
+}
+
+.stat.orange {
+  --accent: #ff7a45;
+}
+
+.stat.yellow {
+  --accent: #f6c744;
+}
+
+.stat.cyan,
+.stat.teal {
+  --accent: #24d9ff;
+}
+
+.statlabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #718096;
+  font-size: 8px;
+}
+
+.statlabel i {
+  width: 7px;
+  height: 7px;
+
+  border: 1px solid var(--accent, var(--pink));
+  box-shadow: 0 0 7px var(--accent, var(--pink));
+
+  border-radius: 2px;
+}
+
+.stat strong {
+  display: block;
+
+  font-size: 24px;
+
+  margin: 9px 0 4px;
+
+  letter-spacing: -0.03em;
+}
+
+.stat small {
+  font-size: 8px;
+  color: var(--green);
+}
+
+.spark {
+  position: absolute;
+
+  right: 9px;
+  bottom: 8px;
+
+  width: 42%;
+  height: 30px;
+
+  color: var(--accent, var(--pink));
+  opacity: 0.7;
+}
+
+.analyticStat {
+  min-height: 92px;
+}
+
+.analyticStat small {
+  display: block;
+
+  font-size: 7px;
+  letter-spacing: 0.12em;
+
+  color: #617085;
+}
+
+.analyticStat b {
+  display: block;
+
+  font-size: 20px;
+
+  margin: 9px 0 4px;
+}
+
+.analyticStat em {
+  font-style: normal;
+
+  color: #36c997;
+  font-size: 8px;
+}
+
+/* =========================
+   COMMAND GRID
+   ========================= */
+
+.commandGrid {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.topgrid {
+  grid-template-columns: 1.65fr 1fr 1.15fr 1.05fr;
+}
+
+.lowergrid {
+  grid-template-columns: 1.55fr 1.05fr 1fr;
+}
+
+.bottomgrid {
+  grid-template-columns: 1.55fr 1fr;
+}
+
+.panel {
+  border: 1px solid #20252c;
+
+  background: linear-gradient(
+    180deg,
+    rgba(10, 11, 14, 0.98),
+    rgba(6, 7, 9, 0.98)
+  );
+
+  border-radius: 7px;
+  padding: 13px;
+
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.015);
+}
+
+.panelhead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.panelhead small {
+  display: block;
+
+  color: #53657a;
+  font-size: 7px;
+  letter-spacing: 0.15em;
+
+  margin-bottom: 4px;
+}
+
+.panelhead h3 {
+  margin: 0;
+
+  font-size: 14px;
+  color: #f0edf3;
+  letter-spacing: 0.005em;
+}
+
+/* =========================
+   PROFESSIONAL CHART SYSTEM
+   ========================= */
+
+.chartbox {
+  height: 220px;
+  position: relative;
+  padding: 4px 0;
+}
+
+.linechart {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.gridlines path {
+  stroke: #20252c;
+  stroke-width: 0.55;
+  opacity: 0.8;
+}
+
+.gridlines line {
+  stroke: #1b2027;
+  stroke-width: 0.55;
+  opacity: 0.75;
+}
+
+.linechart path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chartlegend {
+  display: flex;
+  gap: 20px;
+
+  margin-top: 10px;
+
+  color: #788396;
+  font-size: 9px;
+
+  align-items: center;
+}
+
+.chartlegend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.chartlegend i,
+.legendline i {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background: var(--pink);
+
+  display: inline-block;
+
+  box-shadow: 0 0 6px rgba(255, 31, 203, 0.25);
+}
+
+.chartlegend i.cyan,
+.legendline i.cyan {
+  background: #ff76e7;
+}
+
+.chartlegend i.yellow,
+.legendline i.yellow {
+  background: #d96ac8;
+}
+
+.chartAxisLabel {
+  fill: #667181;
+  font-size: 9px;
+}
+
+.chartAxisValue {
+  fill: #7c8797;
+  font-size: 9px;
+}
+
+.chartTitle {
+  fill: #e7e8eb;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* =========================
+   DONUT
+   ========================= */
+
+.donutwrap {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+  min-height: 220px;
+}
+
+.donut {
+  width: 155px;
+  height: 155px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  flex: none;
+
+  box-shadow: 0 0 28px rgba(255, 31, 203, 0.035);
+}
+
+.donut > div {
+  width: 94px;
+  height: 94px;
+
+  border-radius: 50%;
+
+  background: #08090c;
+  border: 1px solid #20252c;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+}
+
+.donut b {
+  font-size: 22px;
+}
+
+.donut span {
+  font-size: 8px;
+  color: #69778a;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.legend {
+  display: grid;
+  gap: 12px;
+  flex: 1;
+}
+
+.legend div {
+  display: grid;
+  grid-template-columns: 8px 1fr auto;
+
+  gap: 8px;
+  align-items: center;
+
+  font-size: 9px;
+}
+
+.legend i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.legend span {
+  color: #9aa5b5;
+}
+
+.legend b {
+  color: #f1eef3;
+}
+
+/* =========================
+   THREAT NETWORK
+   ========================= */
+
+.threatnetwork {
+  height: 220px;
+  position: relative;
+}
+
+.threatnetwork svg {
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 31, 203, 0.045),
+    transparent 40%
+  );
+}
+
+.threatnetwork line {
+  stroke: #34323b;
+  stroke-width: 1;
+  opacity: 0.75;
+}
+
+.threatnetwork circle {
+  stroke: #4a3446;
+  stroke-width: 1;
+}
+
+.svgnum {
+  fill: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.svgtxt {
+  fill: #8f9caf;
+  font-size: 9px;
+}
+
+.svgcenter {
+  fill: #ff72df;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* =========================
+   RECENT LIST
+   ========================= */
+
+.recentList {
+  display: grid;
+  gap: 3px;
+}
+
+.recentList button {
+  border: 0;
+  border-top: 1px solid #191f26;
+
+  background: transparent;
+  color: #dfe3e9;
+
+  display: grid;
+  grid-template-columns: 25px 1fr auto;
+
+  gap: 7px;
+  align-items: center;
+
+  padding: 8px 3px;
+
+  text-align: left;
+}
+
+.recentList button:first-child {
+  border-top: 0;
+}
+
+.recentList button:hover {
+  background: #0c0d10;
+}
+
+.recentIcon {
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid #51244a;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--pink);
+  font-size: 8px;
+}
+
+.recentList b {
+  display: block;
+  font: 9px ui-monospace, SFMono-Regular, monospace;
+}
+
+.recentList small {
+  display: block;
+
+  color: #748298;
+  font-size: 8px;
+
+  margin-top: 3px;
+}
+
+.recentList em {
+  font-style: normal;
+
+  color: #667488;
+  font-size: 7px;
+}
+
+/* =========================
+   BADGES
+   ========================= */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4px;
+  padding: 4px 7px;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.badge.critical {
+  background: #351027;
+  color: #ff55d7;
+  border: 1px solid #6d1d55;
+}
+
+.badge.high {
+  background: #32170f;
+  color: #ff8a5f;
+  border: 1px solid #68301f;
+}
+
+.badge.medium {
+  background: #342c08;
+  color: #f6d25b;
+  border: 1px solid #6d5d1c;
+}
+
+.badge.low {
+  background: #08292f;
+  color: #45dff7;
+  border: 1px solid #1d6370;
+}
+
+/* =========================
+   TABLES
+   ========================= */
+
+.table {
+  width: 100%;
+}
+
+.tr {
+  display: grid;
+
+  grid-template-columns:
+    1.7fr
+    0.8fr
+    0.75fr
+    0.55fr
+    0.75fr
+    0.85fr
+    0.75fr;
+
+  border: 0;
+  border-top: 1px solid #191f26;
+
+  background: transparent;
+  color: #aeb7c4;
+
+  width: 100%;
+
+  text-align: left;
+
+  padding: 10px 6px;
+
+  align-items: center;
+  gap: 12px;
+
+  font-size: 10px;
+}
+
+.tr.th {
+  color: #52637a;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  padding-top: 4px;
+}
+
+.tr:hover:not(.th) {
+  background: #0b0c10;
+  color: #f0eef2;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.strongmono {
+  color: #e7e5ec;
+}
+
+.risk {
+  color: #ff4bdd;
+  font-weight: 800;
+}
+
+.queue .table {
+  max-height: 305px;
+  overflow: auto;
+}
+
+.linkAction {
+  margin-top: 9px;
+
+  border: 0;
+  background: none;
+
+  color: #ff5ddd;
+  font-size: 9px;
+}
+
+/* =========================
+   NIST FLOW
+   ========================= */
+
+.nistflow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 4px;
+
+  margin: 6px 0 14px;
+}
+
+.nistflow div {
+  text-align: center;
+  position: relative;
+}
+
+.nistflow div:not(:last-child)::after {
+  content: "→";
+
+  position: absolute;
+  right: -5px;
+  top: 14px;
+
+  color: #61405c;
+}
+
+.nistflow span {
+  width: 31px;
+  height: 31px;
+
+  border: 1px solid #30353d;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  margin: auto;
+
+  color: #758398;
+  font-size: 8px;
+}
+
+.nistflow b {
+  display: block;
+
+  font-size: 8px;
+  margin-top: 6px;
+}
+
+.nistflow small {
+  display: block;
+
+  font-size: 7px;
+  color: #536175;
+
+  margin-top: 3px;
+}
+
+.nistflow .done span {
+  border-color: #1d9975;
+  color: var(--green);
+
+  box-shadow: 0 0 12px rgba(34, 224, 160, 0.08);
+}
+
+.nistflow .current span {
+  border-color: var(--pink);
+  color: #fff;
+
+  box-shadow: 0 0 14px rgba(255, 31, 203, 0.18);
+
+  background: #211022;
+}
+
+.nistflow .current b {
+  color: var(--pink2);
+}
+
+.phasebox {
+  border-top: 1px solid #191f26;
+  padding-top: 11px;
+}
+
+.phasebox small {
+  display: block;
+
+  color: #57667a;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+
+.phasebox b {
+  display: block;
+
+  font-size: 14px;
+
+  margin: 5px 0;
+}
+
+.phasebox p {
+  color: #77859a;
+  font-size: 8px;
+  line-height: 1.55;
+
+  margin: 0 0 9px;
+}
+
+.progress {
+  height: 5px;
+
+  background: #111419;
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progress i {
+  display: block;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    var(--pink),
+    #a23cff
+  );
+
+  box-shadow: 0 0 10px rgba(255, 31, 203, 0.25);
+}
+
+/* =========================
+   ACTION LIST
+   ========================= */
+
+.actionlist {
+  display: grid;
+  gap: 6px;
+}
+
+.actionlist button {
+  border: 1px solid #252a31;
+
+  background: #0a0b0e;
+  color: #c2c9d3;
+
+  border-radius: 5px;
+  padding: 9px;
+
+  text-align: left;
+  font-size: 9px;
+}
+
+.actionlist button:hover {
+  border-color: #722060;
+  color: #fff;
+  background: #130d18;
+}
+
+.actionlist span {
+  float: right;
+  color: var(--pink2);
+}
+
+/* =========================
+   ATTACK PATH
+   ========================= */
+
+.attacknodes {
+  display: flex;
+  align-items: center;
+
+  overflow: auto;
+
+  padding: 18px 4px 22px;
+}
+
+.attacknode {
+  min-width: 140px;
+
+  border: 1px solid #3d2139;
+
+  background: linear-gradient(
+    180deg,
+    #100b13,
+    #08090c
+  );
+
+  padding: 11px 10px;
+
+  border-radius: 8px;
+
+  box-shadow: 0 0 18px rgba(255, 31, 203, 0.035);
+}
+
+.attacknode span {
+  display: block;
+
+  color: #ff4ddd;
+
+  font: 8px ui-monospace, monospace;
+
+  margin-bottom: 6px;
+}
+
+.attacknode b {
+  display: block;
+
+  font-size: 10px;
+  color: #eeeaf0;
+}
+
+.attacknode small {
+  display: block;
+
+  color: #68768a;
+  font-size: 7px;
+
+  margin-top: 5px;
+}
+
+.attacknode.last {
+  border-color: #1d6370;
+}
+
+.attackarrow {
+  font-style: normal;
+
+  color: #ff39d5;
+  font-size: 22px;
+
+  padding: 0 8px;
+}
+
+.graphnote {
+  border-top: 1px solid #20252c;
+
+  padding-top: 8px;
+
+  color: #617187;
+  font-size: 8px;
+}
+
+/* =========================
+   PIPELINE
+   ========================= */
+
+.pipeline {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  overflow: auto;
+
+  padding: 5px 0 14px;
+}
+
+.pipeline div {
+  min-width: 88px;
+}
+
+.pipeline span {
+  display: block;
+
+  color: var(--pink);
+  font: 8px ui-monospace, monospace;
+}
+
+.pipeline b {
+  display: block;
+
+  font-size: 8px;
+  color: #d7dbe2;
+
+  margin-top: 4px;
+}
+
+.pipeline i {
+  font-style: normal;
+
+  color: #57364f;
+
+  margin-left: 6px;
+}
+
+.pipelinefoot {
+  display: flex;
+  justify-content: space-between;
+
+  color: #657489;
+  font-size: 8px;
+
+  border-top: 1px solid #191f26;
+
+  padding-top: 10px;
+}
+
+/* =========================
+   EMPTY / ERROR
+   ========================= */
+
+.page .empty {
+  min-height: 50vh;
+}
+
+.empty {
+  display: grid;
+  place-items: center;
+  align-content: center;
+
+  text-align: center;
+
+  border: 1px dashed #27303a;
+  border-radius: 8px;
+
+  color: #748196;
+
+  padding: 40px;
+}
+
+.empty b {
+  font-size: 16px;
+
+  color: #d8d7dd;
+
+  letter-spacing: 0.12em;
+}
+
+.empty p {
+  font-size: 11px;
+}
+
+.errorbar {
+  margin: 12px 18px 0;
+
+  background: #241018;
+  border: 1px solid #65253d;
+
+  color: #ff9bad;
+
+  padding: 10px 12px;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+}
+
+.errorbar button {
+  float: right;
+
+  background: none;
+  border: 0;
+
+  color: #ff9bad;
+  font-size: 14px;
+}
+
+/* =========================
+   INCIDENTS
+   ========================= */
+
+.incidentToolbar {
+  display: flex;
+  gap: 9px;
+
+  margin-bottom: 10px;
+}
+
+.incidentToolbar input {
+  flex: 1;
+}
+
+.incidentToolbar select {
+  width: 160px;
+}
+
+.incidentToolbar input,
+.incidentToolbar select,
+.topactions select,
+.assistant form input {
+  background: #090a0d;
+
+  border: 1px solid #283039;
+
+  color: #dce2ea;
+
+  border-radius: 6px;
+
+  padding: 10px 12px;
+
+  font-size: 10px;
+}
+
+.incidentPanel {
+  padding: 5px;
+}
+
+.incidenttable .tr {
+  grid-template-columns:
+    1.45fr
+    1fr
+    0.7fr
+    0.5fr
+    0.9fr
+    1.25fr
+    0.5fr
+    0.65fr;
+}
+
+.tableFoot {
+  border-top: 1px solid #191f26;
+
+  padding: 11px 7px;
+
+  color: #5f6f84;
+  font-size: 8px;
+}
+
+/* =========================
+   ANALYTICS
+   ========================= */
+
+.heroRow {
+  align-items: center;
+}
+
+.analyticsGrid {
+  display: grid;
+
+  grid-template-columns: 1.55fr 1fr;
+
+  gap: 10px;
+}
+
+.analyticsGrid .bigChart {
+  min-height: 310px;
+}
+
+.analyticsGrid .bigChart .chartbox {
+  height: 250px;
+}
+
+.analyticsGrid .wideAnalytics {
+  grid-column: 1 / -1;
+}
+
+.barlist {
+  display: grid;
+  gap: 10px;
+
+  padding: 3px 0;
+}
+
+.barrow > div {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+
+  font-size: 9px;
+}
+
+.barrow span {
+  color: #9ba6b7;
+}
+
+.barrow b {
+  color: #dfe2e8;
+}
+
+.barrow i {
+  height: 6px;
+
+  background: #111419;
+
+  display: block;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.barrow em {
+  height: 100%;
+
+  display: block;
+
+  background: linear-gradient(
+    90deg,
+    var(--pink),
+    #8625bd
+  );
+
+  border-radius: 8px;
+}
+
+.intelPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.intelNumbers {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+.intelNumbers b {
+  font-size: 20px;
+  color: #fff;
+}
+
+.intelNumbers small {
+  display: block;
+
+  font-size: 8px;
+  color: #66768a;
+
+  font-weight: 400;
+
+  margin-top: 3px;
+}
+
+.signalCard {
+  margin-top: auto;
+
+  border: 1px solid #27303a;
+  background: #0a0b0e;
+
+  padding: 12px;
+
+  border-radius: 6px;
+}
+
+.signalCard span {
+  font-size: 7px;
+  color: #64738a;
+  letter-spacing: 0.12em;
+}
+
+.signalCard strong {
+  display: block;
+
+  margin: 6px 0;
+
+  color: var(--pink2);
+  font-size: 12px;
+}
+
+.signalCard p,
+.dataNote {
+  font-size: 9px;
+  color: #77859a;
+
+  line-height: 1.6;
+
+  margin: 0;
+}
+
+.matrixRows {
+  display: grid;
+  gap: 8px;
+}
+
+.matrixRows > div {
+  display: grid;
+
+  grid-template-columns: 180px 1fr 55px;
+
+  gap: 12px;
+
+  align-items: center;
+
+  font-size: 9px;
+}
+
+.matrixRows span {
+  color: #aab3c0;
+}
+
+.matrixRows i {
+  height: 7px;
+
+  background: #111419;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.matrixRows em {
+  display: block;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    #b31c99,
+    var(--pink)
+  );
+
+  border-radius: 8px;
+}
+
+.matrixRows b {
+  text-align: right;
+  color: #ff63df;
+}
+
+/* =========================
+   THREAT / LANDSCAPE
+   ========================= */
+
+.threatGrid {
+  margin-top: 10px;
+}
+
+.threatGrid .wide {
+  grid-column: 1 / -1;
+}
+
+.legendline {
+  display: flex;
+
+  gap: 20px;
+
+  margin-top: 10px;
+
+  color: #69788c;
+  font-size: 8px;
+}
+
+.legendline span {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.landscapeCards {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 9px;
+
+  margin-bottom: 14px;
+}
+
+.landscapeCards div {
+  border: 1px solid #20262d;
+  background: #08090c;
+
+  padding: 14px;
+
+  border-radius: 6px;
+}
+
+.landscapeCards b {
+  display: block;
+  font-size: 22px;
+}
+
+.landscapeCards span {
+  display: block;
+
+  color: #69778a;
+  font-size: 8px;
+
+  margin-top: 4px;
+}
+
+/* =========================
+   INVESTIGATION
+   ========================= */
+
+.caseHeader {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  border-bottom: 1px solid #20252c;
+
+  padding-bottom: 15px;
+
+  margin-bottom: 10px;
+}
+
+.caseHeader h1 {
+  font-size: 25px;
+  margin: 6px 0;
+}
+
+.caseHeader p {
+  font-size: 10px;
+  color: #768499;
+  margin: 0;
+}
+
+.caseScore {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.caseScore strong {
+  font-size: 29px;
+  color: #fff;
+}
+
+.caseScore strong small {
+  font-size: 8px;
+  color: #69778b;
+  margin-left: 3px;
+}
+
+.investStats {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 9px;
+
+  margin-bottom: 10px;
+}
+
+.investStats > div {
+  border: 1px solid #20262d;
+  background: #08090c;
+
+  padding: 12px;
+
+  border-radius: 6px;
+}
+
+.investStats small {
+  display: block;
+
+  color: #5e7087;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+.investStats b {
+  display: block;
+
+  font-size: 19px;
+
+  margin: 8px 0 3px;
+}
+
+.investStats span {
+  font-size: 8px;
+  color: #69788c;
+}
+
+.investGrid {
+  display: grid;
+
+  grid-template-columns: 1.2fr 1fr;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.investGrid > .panel:nth-child(3),
+.investGrid > .panel:nth-child(4) {
+  grid-column: span 1;
+}
+
+.evidenceHero {
+  border: 1px solid #20262d;
+
+  background: #07080b;
+
+  padding: 14px;
+
+  border-radius: 6px;
+}
+
+.evidenceHero span {
+  font-size: 7px;
+  color: #607187;
+
+  letter-spacing: 0.12em;
+}
+
+.evidenceHero strong {
+  display: block;
+
+  font-size: 16px;
+  color: #ff63dc;
+
+  margin: 5px 0 8px;
+}
+
+.evidenceHero p {
+  margin: 0;
+
+  color: #b1bac7;
+
+  font: 10px ui-monospace, SFMono-Regular, monospace;
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+}
+
+.keyGrid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 8px;
+
+  margin-top: 9px;
+}
+
+.keyGrid div {
+  border-top: 1px solid #191f26;
+
+  padding-top: 9px;
+}
+
+.keyGrid small {
+  display: block;
+
+  color: #596a80;
+  font-size: 7px;
+}
+
+.keyGrid b {
+  display: block;
+
+  font-size: 9px;
+
+  margin-top: 4px;
+
+  color: #d6dae2;
+}
+
+/* =========================
+   RISK
+   ========================= */
+
+.riskVisual {
+  display: flex;
+
+  gap: 20px;
+
+  align-items: center;
+}
+
+.riskRing {
+  width: 115px;
+  height: 115px;
+
+  border-radius: 50%;
+
+  border: 10px solid #33102d;
+
+  box-shadow:
+    inset 0 0 0 1px #7b2167,
+    0 0 20px rgba(255, 31, 203, 0.07);
+
+  display: grid;
+
+  place-items: center;
+  align-content: center;
+
+  flex: none;
+}
+
+.riskRing b {
+  font-size: 25px;
+}
+
+.riskRing span {
+  font-size: 7px;
+  color: #66758a;
+  letter-spacing: 0.12em;
+}
+
+.riskBars {
+  flex: 1;
+
+  display: grid;
+
+  gap: 10px;
+}
+
+.riskBars > div {
+  display: grid;
+
+  grid-template-columns: 120px 1fr 35px;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 8px;
+}
+
+.riskBars span {
+  color: #8793a5;
+}
+
+.riskBars i {
+  height: 7px;
+
+  background: #111419;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+.riskBars em {
+  display: block;
+
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    var(--pink),
+    #9a2bc7
+  );
+
+  border-radius: 8px;
+}
+
+.riskBars b {
+  color: #ff64dc;
+
+  text-align: right;
+}
+
+/* =========================
+   MITRE
+   ========================= */
+
+.techniqueTable {
+  border: 1px solid #1e252d;
+
+  border-radius: 6px;
+
+  overflow: hidden;
+}
+
+.techHead,
+.techniqueTable > div:not(.techHead) {
+  display: grid;
+
+  grid-template-columns: 1fr 0.8fr 1.6fr;
+
+  gap: 12px;
+
+  padding: 9px 10px;
+
+  border-top: 1px solid #191f26;
+
+  font-size: 8px;
+}
+
+.techHead {
+  border-top: 0;
+
+  color: #58697f;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.1em;
+}
+
+.techniqueTable b {
+  color: #ff60db;
+}
+
+.techniqueTable span {
+  color: #8e9bad;
+}
+
+.mitreGrid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+.mitreCard {
+  border: 1px solid #1e252d;
+
+  background: #07080b;
+
+  padding: 11px;
+
+  border-radius: 6px;
+
+  min-height: 135px;
+}
+
+.mitreCard > div:first-child {
+  display: grid;
+
+  grid-template-columns: 28px 1fr;
+
+  gap: 4px;
+}
+
+.mitreCard > div:first-child span {
+  color: #53647a;
+
+  font: 8px ui-monospace, monospace;
+}
+
+.mitreCard > div:first-child b {
+  font-size: 9px;
+}
+
+.mitreCard > div:first-child em {
+  grid-column: 2;
+
+  font-style: normal;
+
+  font-size: 7px;
+
+  color: #5e6f84;
+}
+
+.mitreCard.hot {
+  border-color: #6a205c;
+
+  box-shadow:
+    inset 0 0 20px rgba(255, 31, 203, 0.025);
+}
+
+.mitreCard.hot > div:first-child b {
+  color: #ff5fdc;
+}
+
+.techChip {
+  margin-top: 8px;
+
+  border: 1px solid #20272f;
+
+  background: #0a0b0e;
+
+  padding: 7px;
+
+  border-radius: 4px;
+}
+
+.techChip strong {
+  font: 8px ui-monospace, monospace;
+
+  color: #ff5cdb;
+}
+
+.techChip span {
+  display: block;
+
+  color: #7b899c;
+
+  font-size: 7px;
+
+  margin-top: 3px;
+}
+
+/* =========================
+   LIFECYCLE
+   ========================= */
+
+.lifecycleLarge {
+  display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+
+  gap: 5px;
+}
+
+.lifecycleLarge div {
+  border: 1px solid #20262d;
+
+  padding: 12px 8px;
+
+  border-radius: 6px;
+
+  text-align: center;
+
+  background: #07080b;
+}
+
+.lifecycleLarge span {
+  display: block;
+
+  color: #596b80;
+
+  font: 8px ui-monospace, monospace;
+}
+
+.lifecycleLarge b {
+  display: block;
+
+  font-size: 9px;
+
+  margin: 8px 0 4px;
+}
+
+.lifecycleLarge small {
+  font-size: 7px;
+
+  color: #536176;
+}
+
+.lifecycleLarge .active {
+  border-color: #7a2368;
+
+  background: #170c18;
+
+  box-shadow: 0 0 18px rgba(255, 31, 203, 0.05);
+}
+
+.lifecycleLarge .active span,
+.lifecycleLarge .active b,
+.lifecycleLarge .active small {
+  color: var(--pink2);
+}
+
+/* =========================
+   AI / REPORT
+   ========================= */
+
+.aiResult > div {
+  display: flex;
+
+  gap: 30px;
+
+  border-bottom: 1px solid #20262d;
+
+  padding-bottom: 10px;
+
+  margin-bottom: 10px;
+}
+
+.aiResult span {
+  display: block;
+
+  color: #617189;
+  font-size: 7px;
+}
+
+.aiResult b {
+  display: block;
+
+  color: #ff63dd;
+
+  font-size: 9px;
+
+  margin-top: 3px;
+}
+
+.reportbox {
+  margin: 0;
+
+  white-space: pre-wrap;
+
+  color: #bfc7d3;
+
+  font: 10px/1.7 ui-monospace, SFMono-Regular, monospace;
+
+  background: #050608;
+
+  border: 1px solid #20262d;
+
+  border-radius: 6px;
+
+  padding: 14px;
+
+  max-height: 420px;
+
+  overflow: auto;
+}
+
+/* =========================
+   ATTACK PATH / TIMELINE
+   ========================= */
+
+.attackGrid {
+  display: grid;
+
+  grid-template-columns: 1.6fr 0.8fr;
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.attackStep {
+  display: grid;
+
+  grid-template-columns: 38px 1fr auto;
+
+  gap: 12px;
+
+  padding: 13px 6px;
+
+  border-top: 1px solid #191f26;
+}
+
+.stepNo {
+  color: var(--pink);
+
+  font: 10px ui-monospace, monospace;
+}
+
+.stepBody b {
+  display: block;
+
+  font-size: 10px;
+  color: #e6e3e9;
+}
+
+.stepBody span {
+  display: block;
+
+  color: #65748a;
+  font-size: 8px;
+
+  margin-top: 3px;
+}
+
+.stepBody p {
+  margin: 8px 0 0;
+
+  color: #a5afbd;
+
+  font: 9px/1.55 ui-monospace, monospace;
+
+  white-space: pre-wrap;
+}
+
+.attackStep time {
+  color: #627186;
+
+  font-size: 8px;
+
+  white-space: nowrap;
+}
+
+.sideStack {
+  display: grid;
+
+  gap: 10px;
+
+  align-content: start;
+}
+
+.taggrid {
+  display: flex;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+}
+
+.taggrid span {
+  border: 1px solid #54204b;
+
+  background: #130b15;
+
+  color: #ff69df;
+
+  padding: 7px 8px;
+
+  border-radius: 5px;
+
+  font-size: 8px;
+}
+
+.pathSummary {
+  display: grid;
+
+  grid-template-columns: 70px 1fr;
+
+  gap: 4px 12px;
+
+  align-items: center;
+}
+
+.pathSummary b {
+  font-size: 20px;
+  color: #fff;
+}
+
+.pathSummary span {
+  color: #718095;
+  font-size: 8px;
+}
+
+.timelineMeta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: 1px solid #262c34;
+
+  padding: 8px 11px;
+
+  border-radius: 6px;
+}
+
+.timelineMeta b {
+  font-size: 17px;
+  color: #ff61dc;
+}
+
+.timelineMeta span {
+  font-size: 8px;
+  color: #6c7a8e;
+}
+
+.timelineLarge {
+  position: relative;
+}
+
+.timelineRow {
+  display: grid;
+
+  grid-template-columns: 170px 28px 1fr 90px;
+
+  gap: 12px;
+
+  padding: 16px 6px;
+
+  border-top: 1px solid #191f26;
+
+  min-height: 90px;
+}
+
+.timeCol b {
+  display: block;
+
+  font: 9px ui-monospace, monospace;
+
+  color: #ff5ddb;
+}
+
+.timeCol span {
+  display: block;
+
+  color: #53657b;
+
+  font-size: 7px;
+
+  margin-top: 5px;
+}
+
+.timeDot {
+  position: relative;
+}
+
+.timeDot::before {
+  content: "";
+
+  position: absolute;
+
+  left: 13px;
+
+  top: -17px;
+  bottom: -17px;
+
+  width: 1px;
+
+  background: #30343b;
+}
+
+.timeDot i {
+  position: absolute;
+
+  left: 8px;
+  top: 5px;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  box-shadow: 0 0 10px rgba(255, 31, 203, 0.4);
+
+  z-index: 1;
+}
+
+.timeContent > div {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+}
+
+.timeContent > div b {
+  font-size: 10px;
+}
+
+.timeContent > div span {
+  font-size: 8px;
+
+  color: #68778b;
+
+  border-left: 1px solid #263344;
+
+  padding-left: 10px;
+}
+
+.timeContent p {
+  font: 9px/1.6 ui-monospace, SFMono-Regular, monospace;
+
+  color: #aeb6c2;
+
+  margin: 8px 0;
+}
+
+.timeContent small {
+  font-size: 8px;
+  color: #637187;
+}
+
+.timeSeverity {
+  font-size: 7px;
+
+  color: #ff5cdb;
+
+  text-align: right;
+}
+
+/* =========================
+   COMPLIANCE
+   ========================= */
+
+.complianceHero {
+  display: grid;
+
+  grid-template-columns: 1.4fr 1fr 1fr;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.complianceHero > div {
+  border: 1px solid #252a32;
+
+  background: linear-gradient(
+    180deg,
+    #0b0c10,
+    #07080b
+  );
+
+  padding: 17px;
+
+  border-radius: 7px;
+}
+
+.complianceHero small {
+  display: block;
+
+  color: #617187;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+.complianceHero strong {
+  display: block;
+
+  font-size: 20px;
+
+  margin: 8px 0;
+
+  color: #ff8a5c;
+}
+
+.complianceHero p {
+  font-size: 9px;
+
+  color: #77859a;
+
+  line-height: 1.6;
+
+  margin: 0;
+}
+
+.complianceGrid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.complianceGrid .wide {
+  grid-column: 1 / -1;
+}
+
+.complianceRows {
+  display: grid;
+  gap: 0;
+}
+
+.complianceRows div {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 12px 2px;
+
+  border-top: 1px solid #191f26;
+}
+
+.complianceRows div:first-child {
+  border-top: 0;
+}
+
+.complianceRows span {
+  color: #68778c;
+  font-size: 9px;
+}
+
+.complianceRows b {
+  color: #dfe3e9;
+
+  font-size: 9px;
+
+  text-align: right;
+}
+
+.checklist {
+  display: grid;
+}
+
+.checklist div {
+  display: grid;
+
+  grid-template-columns: 26px 1fr auto;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border-top: 1px solid #191f26;
+
+  padding: 12px 2px;
+}
+
+.checklist i {
+  font-style: normal;
+
+  color: #ff5ddd;
+
+  font: 9px ui-monospace, monospace;
+}
+
+.checklist span {
+  font-size: 9px;
+  color: #b8c0cb;
+}
+
+.checklist b {
+  font-size: 7px;
+  color: #65758a;
+}
+
+.reasonGrid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 8px;
+}
+
+.reasonGrid div {
+  border: 1px solid #20262d;
+
+  background: #08090c;
+
+  padding: 12px;
+
+  border-radius: 5px;
+}
+
+.reasonGrid b {
+  color: #ff5ddd;
+
+  font: 9px ui-monospace, monospace;
+}
+
+.reasonGrid p {
+  font-size: 9px;
+
+  color: #8996a8;
+
+  line-height: 1.6;
+
+  margin: 7px 0 0;
+}
+
+.legalNote {
+  margin: 12px 0 0;
+
+  padding-top: 12px;
+
+  border-top: 1px solid #191f26;
+
+  color: #66758a;
+
+  font-size: 8px;
+
+  line-height: 1.6;
+}
+
+/* =========================
+   REPORTS
+   ========================= */
+
+.reportsPage .reportHeader {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 9px;
+
+  margin-bottom: 10px;
+}
+
+.reportHeader > div {
+  border: 1px solid #20262d;
+
+  background: #08090c;
+
+  padding: 13px;
+
+  border-radius: 6px;
+}
+
+.reportHeader span {
+  display: block;
+
+  color: #5e7086;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+.reportHeader b {
+  display: block;
+
+  font-size: 14px;
+
+  margin-top: 7px;
+}
+
+.reportDocument {
+  background: #f3f0f4;
+
+  color: #11151b;
+
+  border-radius: 5px;
+
+  padding: 45px 55px;
+
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+}
+
+.reportTitle {
+  border-bottom: 2px solid #b51e9d;
+
+  padding-bottom: 20px;
+
+  margin-bottom: 25px;
+}
+
+.reportTitle span {
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  color: #9c1e87;
+}
+
+.reportTitle h2 {
+  font-size: 30px;
+
+  margin: 9px 0;
+}
+
+.reportTitle p {
+  font-size: 10px;
+  color: #606774;
+}
+
+.reportDocument section {
+  border-top: 1px solid #d8d4da;
+
+  padding: 18px 0;
+}
+
+.reportDocument h3 {
+  font-size: 15px;
+
+  margin: 0 0 9px;
+
+  color: #7d1c70;
+}
+
+.reportDocument section div {
+  font-size: 11px;
+
+  line-height: 1.75;
+
+  white-space: pre-wrap;
+}
+
+.reportPlaceholder {
+  min-height: 55vh;
+
+  border: 1px dashed #2a3038;
+
+  display: grid;
+
+  place-items: center;
+  align-content: center;
+
+  text-align: center;
+
+  padding: 40px;
+}
+
+.reportIcon {
+  width: 62px;
+  height: 62px;
+
+  border: 1px solid #7b1e6a;
+
+  color: var(--pink);
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  font-size: 25px;
+
+  box-shadow: 0 0 25px rgba(255, 31, 203, 0.08);
+}
+
+.reportPlaceholder h2 {
+  font-size: 22px;
+
+  margin: 15px 0 5px;
+}
+
+.reportPlaceholder p {
+  max-width: 520px;
+
+  color: #738196;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  margin: 0 0 16px;
+}
+
+/* =========================
+   ASSISTANT
+   ========================= */
+
+.assistant {
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.assistanthead {
+  display: flex;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid #20262d;
+
+  padding-bottom: 12px;
+}
+
+.assistanthead b {
+  font-size: 12px;
+}
+
+.assistanthead span:not(.live) {
+  display: block;
+
+  color: #657386;
+
+  font-size: 8px;
+
+  margin-top: 3px;
+}
+
+.promptrow {
+  display: flex;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+
+  padding: 12px 0;
+}
+
+.promptrow button {
+  background: #0a0b0e;
+
+  border: 1px solid #252b32;
+
+  color: #a7b0bd;
+
+  border-radius: 5px;
+
+  padding: 8px 10px;
+
+  font-size: 8px;
+}
+
+.messages {
+  flex: 1;
+
+  overflow: auto;
+
+  padding: 14px 0;
+}
+
+.welcome {
+  text-align: center;
+
+  margin: auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  color: #68768a;
+
+  padding: 110px 20px;
+}
+
+.welcome strong {
+  font-size: 17px;
+
+  color: #e5e4e9;
+}
+
+.message {
+  display: flex;
+
+  gap: 9px;
+
+  max-width: 78%;
+
+  margin: 11px 0;
+}
+
+.message b {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #241024;
+
+  color: #ff66df;
+
+  border: 1px solid #5b2050;
+
+  border-radius: 5px;
+
+  font-size: 7px;
+
+  flex: none;
+}
+
+.message p {
+  margin: 0;
+
+  background: #0b0c10;
+
+  border: 1px solid #20262d;
+
+  padding: 11px;
+
+  border-radius: 6px;
+
+  color: #b9c1cd;
+
+  font-size: 10px;
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+}
+
+.message.user {
+  margin-left: auto;
+
+  flex-direction: row-reverse;
+}
+
+.message.user p {
+  background: #201024;
+
+  border-color: #542052;
+}
+
+.assistant form {
+  display: flex;
+
+  gap: 8px;
+
+  border-top: 1px solid #20262d;
+
+  padding-top: 12px;
+}
+
+.assistant form input {
+  flex: 1;
+}
+
+/* =========================
+   SETTINGS
+   ========================= */
+
+.settings {
+  max-width: 760px;
+
+  display: grid;
+
+  gap: 10px;
+}
+
+.settings label {
+  font-size: 8px;
+  color: #68778b;
+}
+
+.settings input {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 6px;
+}
+
+.settings p {
+  font-size: 10px;
+
+  color: #748196;
+
+  line-height: 1.7;
+}
+
+.logoutFloat {
+  position: fixed;
+
+  right: 18px;
+  bottom: 16px;
+
+  background: #090a0d;
+
+  border: 1px solid #26303a;
+
+  color: #728095;
+
+  padding: 8px 10px;
+
+  border-radius: 5px;
+
+  font-size: 8px;
+
+  z-index: 30;
+}
+
+/* =========================
+   AUTH
+   ========================= */
+
+.authShell {
+  min-height: 100vh;
+
+  background: #050507;
+
+  position: relative;
+
+  overflow: hidden;
+
+  color: #eef0f5;
+
+  padding: 30px 54px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.authGridGlow {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 18% 35%,
+      rgba(255, 31, 203, 0.07),
+      transparent 27%
+    ),
+    linear-gradient(
+      rgba(255, 31, 203, 0.014) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 31, 203, 0.014) 1px,
+      transparent 1px
+    );
+
+  background-size: auto, 54px 54px, 54px 54px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    #000,
+    transparent 92%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000,
+    transparent 92%
+  );
+}
+
+.authBrandTop {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.brandAuthMark {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid var(--pink);
+
+  display: grid;
+
+  place-items: center;
+
+  color: var(--pink);
+
+  font-size: 21px;
+
+  font-weight: 900;
+
+  clip-path: polygon(
+    50% 0,
+    94% 25%,
+    94% 75%,
+    50% 100%,
+    6% 75%,
+    6% 25%
+  );
+}
+
+.authBrandTop strong {
+  font-size: 18px;
+  letter-spacing: 0.06em;
+}
+
+.authBrandTop strong span {
+  color: var(--pink);
+}
+
+.authBrandTop small {
+  display: block;
+
+  font-size: 7px;
+
+  letter-spacing: 0.13em;
+
+  color: #687283;
+
+  margin-top: 3px;
+}
+
+.authHero {
+  position: relative;
+
+  z-index: 1;
+
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) 460px;
+
+  gap: 80px;
+
+  align-items: center;
+
+  max-width: 1320px;
+
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+.authHeroCopy {
+  max-width: 680px;
+}
+
+.authHeroCopy h1 {
+  font-size: 68px;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+
+  margin: 14px 0 22px;
+}
+
+.authHeroCopy h1 em {
+  font-style: normal;
+  color: var(--pink);
+}
+
+.authHeroCopy > p {
+  max-width: 610px;
+
+  color: #8b95a6;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+.authFeatures {
+  margin-top: 42px;
+
+  display: grid;
+
+  gap: 14px;
+}
+
+.authFeature {
+  display: flex;
+
+  gap: 18px;
+}
+
+.authFeature > b {
+  font: 10px ui-monospace, monospace;
+
+  color: var(--pink);
+}
+
+.authFeature strong,
+.authFeature span {
+  display: block;
+}
+
+.authFeature strong {
+  font-size: 11px;
+}
+
+.authFeature span {
+  font-size: 9px;
+
+  color: #697486;
+
+  margin-top: 4px;
+
+  line-height: 1.5;
+}
+
+.authStatus {
+  margin-top: 34px;
+
+  border: 1px solid #20252b;
+
+  background: #08090c;
+
+  display: inline-flex;
+
+  gap: 9px;
+
+  align-items: center;
+
+  padding: 10px 13px;
+
+  border-radius: 5px;
+
+  color: #7d899a;
+
+  font-size: 8px;
+}
+
+.authStatus i {
+  display: inline-block;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow: 0 0 10px var(--green);
+}
+
+.authCard {
+  width: 100%;
+
+  border: 1px solid #292e36;
+
+  background: linear-gradient(
+    180deg,
+    #0d0e13,
+    #07080b
+  );
+
+  border-radius: 10px;
+
+  padding: 27px;
+
+  box-shadow:
+    0 35px 100px rgba(0, 0, 0, 0.48),
+    0 0 40px rgba(255, 31, 203, 0.035);
+
+  position: relative;
+}
+
+.authCardTop {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.securityPill {
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+
+  color: #aab3c0;
+}
+
+.authTabs {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  border-bottom: 1px solid #20252d;
+
+  margin-bottom: 24px;
+}
+
+.authTabs button {
+  background: none;
+
+  border: 0;
+
+  color: #606b7c;
+
+  padding: 10px 5px;
+
+  font-size: 10px;
+
+  border-bottom: 2px solid transparent;
+}
+
+.authTabs button.active {
+  color: #fff;
+
+  border-color: var(--pink);
+}
+
+.authCard h2 {
+  font-size: 22px;
+
+  margin: 0 0 7px;
+}
+
+.authSub {
+  color: #697486;
+
+  font-size: 9px;
+
+  line-height: 1.6;
+
+  margin: 0 0 22px;
+}
+
+.authCard form {
+  display: grid;
+
+  gap: 13px;
+}
+
+.authCard label {
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+
+  color: #737f90;
+}
+
+.authCard input:not([type="checkbox"]) {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 7px;
+
+  background: #08090c;
+
+  border: 1px solid #252b33;
+
+  color: #e6e9ef;
+
+  border-radius: 5px;
+
+  padding: 11px 12px;
+
+  font-size: 10px;
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.passwordWrap input {
+  padding-right: 54px !important;
+}
+
+.passwordWrap button {
+  position: absolute;
+
+  right: 7px;
+  top: 7px;
+
+  border: 0;
+
+  background: none;
+
+  color: #697486;
+
+  font-size: 8px;
+}
+
+.authRow {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.check {
+  display: flex !important;
+
+  align-items: center;
+
+  gap: 7px;
+
+  letter-spacing: 0 !important;
+
+  color: #687385 !important;
+}
+
+.check input {
+  accent-color: var(--pink);
+}
+
+.linkBtn {
+  background: none;
+
+  border: 0;
+
+  color: #d452c0;
+
+  font-size: 8px;
+}
+
+.authSubmit {
+  border: 1px solid var(--pink);
+
+  background: linear-gradient(
+    135deg,
+    #ff1fcb,
+    #9e24c6
+  );
+
+  color: #fff;
+
+  border-radius: 5px;
+
+  padding: 12px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  margin-top: 2px;
+}
+
+.authDivider {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 20px 0 12px;
+
+  color: #495464;
+
+  font-size: 7px;
+
+  letter-spacing: 0.12em;
+}
+
+.authDivider::before,
+.authDivider::after {
+  content: "";
+
+  height: 1px;
+
+  background: #20252d;
+
+  flex: 1;
+}
+
+.ssoRow {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  gap: 7px;
+}
+
+.ssoRow button {
+  background: #0a0b0e;
+
+  border: 1px solid #222930;
+
+  color: #9aa4b3;
+
+  border-radius: 5px;
+
+  padding: 9px 5px;
+
+  font-size: 8px;
+}
+
+.authLegal {
+  font-size: 7px !important;
+
+  color: #4d5868 !important;
+
+  text-align: center;
+
+  line-height: 1.6;
+
+  margin: 14px 0 0;
+}
+
+.authFooter {
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #414b5b;
+
+  font-size: 7px;
+
+  padding-top: 20px;
+}
+
+.authFooter i {
+  display: inline-block;
+
+  width: 5px;
+  height: 5px;
+
+  background: var(--green);
+
+  border-radius: 50%;
+}
+
+/* =========================
+   NIST FRAMEWORK
+   ========================= */
+
+.nistFramework {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.nistFramework > div {
+  border: 1px solid #20262d;
+
+  background: linear-gradient(
+    180deg,
+    #090b0f,
+    #060709
+  );
+
+  padding: 18px;
+
+  border-radius: 7px;
+
+  min-height: 190px;
+}
+
+.nistFramework span {
+  font: 9px ui-monospace, monospace;
+
+  color: #ff58d7;
+}
+
+.nistFramework b {
+  display: block;
+
+  font-size: 18px;
+
+  margin: 13px 0 7px;
+}
+
+.nistFramework p {
+  font-size: 10px;
+
+  color: #77869b;
+
+  line-height: 1.7;
+
+  margin: 0;
+}
+
+.nistFramework small {
+  display: block;
+
+  color: #5e7086;
+
+  font-size: 8px;
+
+  margin-top: 18px;
+
+  letter-spacing: 0.1em;
+}
+
+.nistFramework .active {
+  border-color: #8a226f;
+
+  box-shadow:
+    0 0 24px rgba(255, 31, 203, 0.05),
+    inset 0 0 25px rgba(255, 31, 203, 0.025);
+}
+
+.nistFramework .active b,
+.nistFramework .active small {
+  color: #ff60db;
+}
+
+.frameworkDetail {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+.frameworkDetail div {
+  border: 1px solid #1f252c;
+
+  padding: 14px;
+
+  background: #07080b;
+
+  border-radius: 6px;
+}
+
+.frameworkDetail span {
+  display: block;
+
+  color: #5f7085;
+
+  font-size: 8px;
+}
+
+.frameworkDetail b {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 10px;
+}
+
+.knowledgeGrid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.kbtext {
+  font-size: 11px;
+
+  color: #8b98aa;
+
+  line-height: 1.7;
+}
+
+.kbstate {
+  display: inline-block;
+
+  margin-top: 12px;
+
+  color: #ff5bd9;
+
+  font-size: 8px;
+
+  letter-spacing: 0.1em;
+
+  border: 1px solid #54204b;
+
+  padding: 6px 8px;
+
+  border-radius: 4px;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1400px) {
+  .sidebar {
+    width: 210px;
+  }
+
+  .main {
+    margin-left: 210px;
+  }
+
+  .topgrid {
+    grid-template-columns: 1.5fr 1fr 1.1fr;
+  }
+
+  .statsgrid.seven {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .lowergrid {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  .lowergrid > .panel:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .mitreGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1050px) {
+  .topgrid,
+  .lowergrid,
+  .bottomgrid,
+  .analyticsGrid,
+  .investGrid,
+  .attackGrid,
+  .complianceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .topgrid .prioritySide {
+    grid-column: auto;
+  }
+
+  .analyticsGrid .wideAnalytics,
+  .threatGrid .wide,
+  .complianceGrid .wide {
+    grid-column: auto;
+  }
+
+  .investStats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .mitreGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topbar .crumb {
+    min-width: 160px;
+  }
+
+  .topactions select {
+    width: 140px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nistFramework,
+  .knowledgeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .frameworkDetail {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .sidebar {
+    position: static;
+    width: 68px;
+  }
+
+  .brand div:last-child,
+  .navgroup label,
+  .navgroup span,
+  .navgroup em,
+  .env,
+  .sidebottom,
+  .version {
+    display: none;
+  }
+
+  .navgroup button {
+    justify-content: center;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .topbar {
+    padding: 0 10px;
+  }
+
+  .crumb {
+    display: none;
+  }
+
+  .topactions .live,
+  .topactions select {
+    display: none;
+  }
+
+  .page {
+    padding: 16px 10px 35px;
+  }
+
+  .pageintro {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .statsgrid.seven {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .investStats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .landscapeCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reportDocument {
+    padding: 25px;
+  }
+
+  .reasonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineRow {
+    grid-template-columns: 95px 24px 1fr;
+  }
+
+  .timeSeverity {
+    display: none;
+  }
+
+  .authShell {
+    padding: 22px;
+  }
+
+  .authHero {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+
+    max-width: 620px;
+
+    padding: 35px 0;
+  }
+
+  .authHeroCopy h1 {
+    font-size: 48px;
+  }
+
+  .authFooter {
+    display: none;
+  }
+}
+
+/* =========================================================
+   CLOCKGUARD AI INVESTIGATION WORKFLOW
+   ========================================================= */
+
+.workflowbig {
+  display: grid;
+
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+
+  gap: 0;
+
+  margin: 32px 0 34px;
+
+  padding: 4px 0;
+}
+
+.workflowitem {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 0 14px;
+}
+
+.workflowtop {
+  position: relative;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.workflownumber {
+  position: relative;
+
+  z-index: 2;
+
+  width: 34px;
+  height: 34px;
+
+  min-width: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #303039;
+
+  border-radius: 50%;
+
+  background: #08080b;
+
+  color: #777783;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.8px;
+}
+
+.workflowitem.active .workflownumber,
+.workflowitem.completed .workflownumber {
+  border-color: #ff1fcb;
+
+  color: #ff1fcb;
+
+  box-shadow: 0 0 16px rgba(255, 31, 203, 0.16);
+}
+
+.workflowline {
+  position: absolute;
+
+  left: 34px;
+  right: -14px;
+
+  top: 17px;
+
+  height: 1px;
+
+  background: #292930;
+}
+
+.workflowitem.completed .workflowline {
+  background: linear-gradient(
+    90deg,
+    #ff1fcb 0%,
+    #6b2860 100%
+  );
+}
+
+.workflowtitle {
+  display: block;
+
+  min-height: 40px;
+
+  margin: 0 0 7px;
+
+  color: #f4f2f6;
+
+  font-size: 13px;
+
+  font-weight: 650;
+
+  line-height: 1.45;
+
+  letter-spacing: -0.05px;
+
+  overflow-wrap: break-word;
+}
+
+.workflowitem.pending .workflowtitle {
+  color: #9a9aa5;
+}
+
+.workflowstatus {
+  display: block;
+
+  color: #6f707b;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.workflowitem.active .workflowstatus,
+.workflowitem.completed .workflowstatus {
+  color: #d94fc1;
+}
+
+/* ---------------------------------------------------------
+   WORKFLOW RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 1150px) {
+  .workflowbig {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    row-gap: 30px;
+  }
+
+  .workflowline {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .workflowbig {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .workflowitem {
+    padding: 0;
+  }
+
+  .workflowline {
+    display: none;
+  }
+}
+/* =========================================================
+   CLOCKGUARD COMMAND CENTER — PROFESSIONAL LAYOUT
+   Only affects Overview / Command Center
+   ========================================================= */
+
+.commandCenterPage {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
+
+.commandHero {
+  margin-bottom: 22px;
+}
+
+.commandHero h1 {
+  font-size: 34px;
+  letter-spacing: -0.8px;
+}
+
+.commandHero p {
+  max-width: 720px;
+}
+
+/* ---------------------------------------------------------
+   SECURITY STATS
+   --------------------------------------------------------- */
+
+.commandStats {
+  width: 100%;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.commandStats .stat {
+  min-height: 132px;
+}
+
+/* ---------------------------------------------------------
+   TOP COMMAND CENTER GRID
+   3 balanced columns
+   --------------------------------------------------------- */
+
+.commandOverviewGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(260px, 0.85fr)
+    minmax(320px, 1fr);
+  gap: 16px;
+  align-items: stretch;
+  margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------------
+   THREAT ACTIVITY
+   --------------------------------------------------------- */
+
+.commandTrend {
+  min-width: 0;
+}
+
+.commandTrend .chartbox {
+  height: 315px;
+}
+
+.commandTrend .chartlegend {
+  margin-top: 12px;
+}
+
+/* ---------------------------------------------------------
+   SEVERITY
+   --------------------------------------------------------- */
+
+.commandSeverity {
+  min-width: 0;
+}
+
+.commandSeverity .donutwrap {
+  min-height: 315px;
+  height: 315px;
+  justify-content: center;
+  gap: 28px;
+}
+
+.commandSeverity .donut {
+  width: 170px;
+  height: 170px;
+  flex-shrink: 0;
+}
+
+.commandSeverity .donut > div {
+  width: 104px;
+  height: 104px;
+}
+
+/* ---------------------------------------------------------
+   HIGH PRIORITY
+   --------------------------------------------------------- */
+
+.commandPriority {
+  min-width: 0;
+}
+
+.commandPriority .recentList {
+  min-height: 315px;
+  max-height: 315px;
+  overflow-y: auto;
+}
+
+.commandPriority .recentList button {
+  min-height: 56px;
+}
+
+/* ---------------------------------------------------------
+   RESPONSE GRID
+   Priority queue gets more space
+   --------------------------------------------------------- */
+
+.commandResponseGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(0, 0.95fr)
+    minmax(0, 0.95fr);
+  gap: 16px;
+  align-items: stretch;
+  margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------------
+   PRIORITY QUEUE
+   --------------------------------------------------------- */
+
+.commandQueue {
+  min-width: 0;
+}
+
+.commandQueue .table {
+  min-height: 335px;
+  max-height: 335px;
+  overflow-y: auto;
+}
+
+.commandQueue .tr {
+  min-height: 48px;
+}
+
+.commandQueue .linkAction {
+  margin-top: 14px;
+}
+
+/* ---------------------------------------------------------
+   NIST
+   --------------------------------------------------------- */
+
+.commandNist {
+  min-width: 0;
+}
+
+.commandNist .nistflow {
+  min-height: 180px;
+}
+
+.commandNist .phasebox {
+  margin-top: 14px;
+}
+
+/* ---------------------------------------------------------
+   AI GUIDANCE
+   --------------------------------------------------------- */
+
+.commandGuidance {
+  min-width: 0;
+}
+
+.commandGuidance .actionlist {
+  min-height: 270px;
+}
+
+.commandGuidance .actionlist button {
+  min-height: 49px;
+}
+
+/* ---------------------------------------------------------
+   ATTACK PATH
+   FULL WIDTH — removes black empty area
+   --------------------------------------------------------- */
+
+.commandAttackSection {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.commandAttackSection .panel {
+  width: 100%;
+  min-height: 390px;
+}
+
+.commandAttackSection .attackgraph {
+  width: 100%;
+  min-height: 300px;
+}
+
+.commandAttackSection .attacknodes {
+  width: 100%;
+  min-height: 260px;
+  padding-top: 34px;
+  padding-bottom: 38px;
+}
+
+/* ---------------------------------------------------------
+   LARGE DESKTOP
+   --------------------------------------------------------- */
+
+@media (min-width: 1600px) {
+
+  .commandOverviewGrid {
+    grid-template-columns:
+      minmax(0, 1.75fr)
+      minmax(280px, 0.85fr)
+      minmax(350px, 1fr);
+    gap: 18px;
+  }
+
+  .commandResponseGrid {
+    grid-template-columns:
+      minmax(0, 1.75fr)
+      minmax(0, 0.9fr)
+      minmax(0, 0.9fr);
+    gap: 18px;
+  }
+
+  .commandTrend .chartbox {
+    height: 345px;
+  }
+
+  .commandSeverity .donutwrap,
+  .commandPriority .recentList {
+    min-height: 345px;
+    height: 345px;
+  }
+
+  .commandQueue .table {
+    min-height: 365px;
+    max-height: 365px;
+  }
+
+  .commandAttackSection .panel {
+    min-height: 430px;
+  }
+
+  .commandAttackSection .attackgraph {
+    min-height: 335px;
+  }
+}
+
+/* ---------------------------------------------------------
+   ULTRA WIDE
+   --------------------------------------------------------- */
+
+@media (min-width: 1900px) {
+
+  .commandOverviewGrid,
+  .commandResponseGrid {
+    gap: 20px;
+  }
+
+  .commandTrend .chartbox {
+    height: 370px;
+  }
+
+  .commandSeverity .donutwrap,
+  .commandPriority .recentList {
+    min-height: 370px;
+    height: 370px;
+  }
+
+  .commandQueue .table {
+    min-height: 390px;
+    max-height: 390px;
+  }
+
+  .commandAttackSection .panel {
+    min-height: 470px;
+  }
+
+  .commandAttackSection .attackgraph {
+    min-height: 370px;
+  }
+}
+
+/* ---------------------------------------------------------
+   LAPTOP / SMALL DESKTOP
+   --------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+
+  .commandOverviewGrid {
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(260px, 0.9fr);
+
+  }
+
+  .commandPriority {
+    grid-column: 1 / -1;
+  }
+
+  .commandResponseGrid {
+    grid-template-columns:
+      minmax(0, 1.3fr)
+      minmax(0, 1fr);
+  }
+
+  .commandGuidance {
+    grid-column: 1 / -1;
+  }
+
+  .commandTrend .chartbox {
+    height: 290px;
+  }
+
+  .commandSeverity .donutwrap,
+  .commandPriority .recentList {
+    min-height: 290px;
+    height: 290px;
+  }
+}
+
+/* ---------------------------------------------------------
+   TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .commandOverviewGrid,
+  .commandResponseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .commandPriority,
+  .commandGuidance {
+    grid-column: auto;
+  }
+
+  .commandTrend .chartbox,
+  .commandSeverity .donutwrap,
+  .commandPriority .recentList {
+    height: auto;
+    min-height: 260px;
+  }
+
+  .commandQueue .table {
+    min-height: 300px;
+    max-height: 300px;
+    overflow-x: auto;
+  }
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .commandHero h1 {
+    font-size: 28px;
+  }
+
+  .commandStats {
+    gap: 10px;
+  }
+
+  .commandOverviewGrid,
+  .commandResponseGrid {
+    gap: 12px;
+  }
+
+  .commandAttackSection .panel {
+    min-height: 320px;
+  }
+
+  .commandAttackSection .attackgraph {
+    min-height: 250px;
+    overflow-x: auto;
+  }
+}
+
+/* =========================================================
+   CLOCKGUARD — COMMAND CENTER TYPOGRAPHY UPGRADE
+   Makes internal dashboard content larger + readable
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   GENERAL PANEL TYPOGRAPHY
+   --------------------------------------------------------- */
+
+.commandCenterPage .panelhead h3 {
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.commandCenterPage .panelhead small {
+  font-size: 11px;
+  letter-spacing: 1.1px;
+  font-weight: 700;
+}
+
+.commandCenterPage .panelhead {
+  margin-bottom: 18px;
+}
+
+/* ---------------------------------------------------------
+   STAT CARDS
+   --------------------------------------------------------- */
+
+.commandCenterPage .statlabel {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.commandCenterPage .stat strong {
+  font-size: 29px;
+  line-height: 1.1;
+  font-weight: 750;
+}
+
+.commandCenterPage .stat small {
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   CHART LEGEND
+   --------------------------------------------------------- */
+
+.commandCenterPage .chartlegend {
+  font-size: 12px;
+}
+
+.commandCenterPage .chartlegend span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   RECENT HIGH PRIORITY INCIDENTS
+   --------------------------------------------------------- */
+
+.commandCenterPage .recentList button {
+  padding: 13px 7px;
+  gap: 11px;
+}
+
+.commandCenterPage .recentList button > div b {
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 700;
+  display: block;
+}
+
+.commandCenterPage .recentList button > div small {
+  font-size: 11px;
+  line-height: 1.35;
+  margin-top: 3px;
+  display: block;
+}
+
+.commandCenterPage .recentList button em {
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.commandCenterPage .recentIcon {
+  font-size: 15px;
+}
+
+/* ---------------------------------------------------------
+   BADGES
+   --------------------------------------------------------- */
+
+.commandCenterPage .badge {
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .45px;
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   PRIORITY INCIDENT TABLE
+   --------------------------------------------------------- */
+
+.commandCenterPage .commandQueue .table {
+  font-size: 12px;
+}
+
+/* Table header */
+.commandCenterPage .commandQueue .tr.th {
+  min-height: 44px;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: .9px;
+}
+
+/* Every table row */
+.commandCenterPage .commandQueue .tr:not(.th) {
+  min-height: 56px;
+  font-size: 12px;
+}
+
+/* Incident ID */
+.commandCenterPage .commandQueue .mono {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .15px;
+  line-height: 1.35;
+}
+
+/* Time */
+.commandCenterPage .commandQueue .tr > span:nth-child(2) {
+  font-size: 12px;
+  font-weight: 550;
+}
+
+/* Type */
+.commandCenterPage .commandQueue .tr > span:nth-child(4) {
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.35;
+}
+
+/* Risk score */
+.commandCenterPage .commandQueue .risk {
+  font-size: 14px;
+  font-weight: 750;
+}
+
+/* Anomaly score */
+.commandCenterPage .commandQueue .tr > span:nth-child(6) {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Status */
+.commandCenterPage .commandQueue .tr > span:nth-child(7) {
+  font-size: 11px;
+  font-weight: 650;
+}
+
+/* View all */
+.commandCenterPage .commandQueue .linkAction {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   NIST RESPONSE WORKFLOW
+   --------------------------------------------------------- */
+
+.commandCenterPage .nistflow > div {
+  padding: 10px 6px;
+}
+
+.commandCenterPage .nistflow > div span {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.commandCenterPage .nistflow > div b {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.commandCenterPage .nistflow > div small {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* Current phase */
+.commandCenterPage .phasebox small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 750;
+}
+
+.commandCenterPage .phasebox b {
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 750;
+}
+
+.commandCenterPage .phasebox p {
+  font-size: 12px;
+  line-height: 1.55;
+  margin-top: 7px;
+}
+
+/* ---------------------------------------------------------
+   AI GUIDANCE
+   --------------------------------------------------------- */
+
+.commandCenterPage .commandGuidance .actionlist button {
+  min-height: 54px;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 650;
+}
+
+.commandCenterPage .commandGuidance .actionlist button span {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   ATTACK PATH
+   --------------------------------------------------------- */
+
+.commandCenterPage .commandAttackSection .panelhead h3 {
+  font-size: 18px;
+}
+
+.commandCenterPage .commandAttackSection .attacknode b {
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.commandCenterPage .commandAttackSection .attacknode small {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.commandCenterPage .commandAttackSection .attacknode > span {
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.commandCenterPage .commandAttackSection .attackarrow {
+  font-size: 20px;
+}
+
+/* Graph description */
+.commandCenterPage .commandAttackSection .graphnote {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   RESPONSE CLOCK
+   --------------------------------------------------------- */
+
+.commandCenterPage .clockbox span {
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  font-weight: 750;
+}
+
+.commandCenterPage .clockbox strong {
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.commandCenterPage .clockbox small {
+  font-size: 10px;
+  letter-spacing: .8px;
+  font-weight: 650;
+}
+
+/* ---------------------------------------------------------
+   HERO TEXT
+   --------------------------------------------------------- */
+
+.commandCenterPage .eyebrow {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  font-weight: 750;
+}
+
+.commandCenterPage .pageintro h1 {
+  font-size: 34px;
+  line-height: 1.15;
+}
+
+.commandCenterPage .pageintro p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   LARGE DESKTOP
+   --------------------------------------------------------- */
+
+@media (min-width: 1600px) {
+
+  .commandCenterPage .panelhead h3 {
+    font-size: 18px;
+  }
+
+  .commandCenterPage .commandQueue .tr:not(.th) {
+    min-height: 60px;
+    font-size: 13px;
+  }
+
+  .commandCenterPage .commandQueue .mono {
+    font-size: 13px;
+  }
+
+  .commandCenterPage .commandQueue .tr > span:nth-child(4) {
+    font-size: 13px;
+  }
+
+  .commandCenterPage .recentList button > div b {
+    font-size: 14px;
+  }
+
+  .commandCenterPage .recentList button > div small {
+    font-size: 12px;
+  }
+
+  .commandCenterPage .phasebox b {
+    font-size: 18px;
+  }
+
+  .commandCenterPage .commandGuidance .actionlist button {
+    font-size: 13px;
+  }
+
+  .commandCenterPage .commandAttackSection .attacknode b {
+    font-size: 14px;
+  }
+}
+
+/* ---------------------------------------------------------
+   EXTRA LARGE SCREEN
+   --------------------------------------------------------- */
+
+@media (min-width: 1900px) {
+
+  .commandCenterPage .commandQueue .tr:not(.th) {
+    min-height: 64px;
+    font-size: 13px;
+  }
+
+  .commandCenterPage .commandQueue .mono {
+    font-size: 13px;
+  }
+
+  .commandCenterPage .stat strong {
+    font-size: 32px;
+  }
+
+  .commandCenterPage .panelhead h3 {
+    font-size: 19px;
+  }
+
+  .commandCenterPage .commandGuidance .actionlist button {
+    min-height: 58px;
+    font-size: 13px;
+  }
+}
+/* =========================================================
+   CLOCKGUARD — GLOBAL FRONTEND TYPOGRAPHY UPGRADE
+   Applies across the complete application
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   GLOBAL BASE
+   --------------------------------------------------------- */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   MAIN PAGE
+   --------------------------------------------------------- */
+
+.page {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   PAGE HEADERS
+   --------------------------------------------------------- */
+
+.pageintro h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.pageintro p {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.eyebrow {
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 1.1px;
+  font-weight: 750;
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR
+   --------------------------------------------------------- */
+
+.sidebar {
+  font-size: 14px;
+}
+
+.sidebar .brand {
+  font-size: 17px;
+}
+
+.sidebar nav a,
+.sidebar button {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.sidebar nav a span,
+.sidebar button span {
+  font-size: 13px;
+}
+
+.sidebar small {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+/* ---------------------------------------------------------
+   TOPBAR
+   --------------------------------------------------------- */
+
+.topbar {
+  font-size: 13px;
+}
+
+.topbar button,
+.topbar a {
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   PANELS
+   --------------------------------------------------------- */
+
+.panel {
+  font-size: 14px;
+}
+
+.panelhead h3 {
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.panelhead small {
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.panelhead {
+  margin-bottom: 17px;
+}
+
+/* ---------------------------------------------------------
+   STAT CARDS
+   --------------------------------------------------------- */
+
+.statlabel {
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.stat strong {
+  font-size: 29px;
+  line-height: 1.1;
+  font-weight: 750;
+}
+
+.stat small {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+/* ---------------------------------------------------------
+   BUTTONS
+   --------------------------------------------------------- */
+
+button {
+  font-family: inherit;
+}
+
+button,
+.btn,
+.ghost,
+.seg,
+.linkAction {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+button b {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   TABLES — ALL PAGES
+   --------------------------------------------------------- */
+
+.table {
+  font-size: 12px;
+}
+
+.table .tr {
+  font-size: 12px;
+  line-height: 1.4;
+  min-height: 50px;
+}
+
+.table .tr.th {
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: .8px;
+  font-weight: 750;
+}
+
+.table .mono {
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.table .badge {
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.table .risk {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+/* ---------------------------------------------------------
+   BADGES
+   --------------------------------------------------------- */
+
+.badge {
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: .35px;
+  padding: 5px 8px;
+}
+
+/* ---------------------------------------------------------
+   RECENT / INCIDENT LISTS
+   --------------------------------------------------------- */
+
+.recentList button {
+  font-size: 12px;
+}
+
+.recentList button b {
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.recentList button small {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.recentList button em {
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   ACTION LISTS
+   --------------------------------------------------------- */
+
+.actionlist button {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+.actionlist button span {
+  font-size: 17px;
+}
+
+/* ---------------------------------------------------------
+   CHARTS
+   --------------------------------------------------------- */
+
+.chartlegend {
+  font-size: 12px;
+}
+
+.chartlegend span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------
+   DONUT
+   --------------------------------------------------------- */
+
+.donut b {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.donut span {
+  font-size: 11px;
+}
+
+.legend {
+  font-size: 12px;
+}
+
+.legend span {
+  font-size: 12px;
+}
+
+.legend b {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   ACTIVITY BARS
+   --------------------------------------------------------- */
+
+.barrow > div {
+  font-size: 12px;
+}
+
+.barrow span {
+  font-size: 12px;
+}
+
+.barrow b {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   THREAT NETWORK
+   --------------------------------------------------------- */
+
+.svgnum {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.svgtxt {
+  font-size: 10px;
+}
+
+.svgcenter {
+  font-size: 10px;
+  font-weight: 750;
+}
+
+/* ---------------------------------------------------------
+   NIST WORKFLOW
+   --------------------------------------------------------- */
+
+.nistflow > div b {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.nistflow > div small {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.phasebox small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 750;
+}
+
+.phasebox b {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.phasebox p {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   ATTACK PATH
+   --------------------------------------------------------- */
+
+.attacknode b {
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.attacknode small {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.attacknode > span {
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.graphnote {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   INVESTIGATION PAGE
+   --------------------------------------------------------- */
+
+.investStats > div strong {
+  font-size: 25px;
+}
+
+.investStats > div small {
+  font-size: 11px;
+}
+
+.investStats > div span {
+  font-size: 12px;
+}
+
+.investigationPage,
+.investigation {
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   INCIDENT DETAILS
+   --------------------------------------------------------- */
+
+.incidentId,
+.incidentHeader h2,
+.incidentHeader h3 {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.incidentHeader small {
+  font-size: 11px;
+}
+
+.incidentHeader p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   TIMELINE
+   --------------------------------------------------------- */
+
+.timeline {
+  font-size: 13px;
+}
+
+.timeline small {
+  font-size: 11px;
+}
+
+.timeline b {
+  font-size: 13px;
+}
+
+.timeline p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   EVIDENCE
+   --------------------------------------------------------- */
+
+.evidence,
+.evidenceCard {
+  font-size: 13px;
+}
+
+.evidenceCard h4 {
+  font-size: 14px;
+}
+
+.evidenceCard small {
+  font-size: 11px;
+}
+
+.evidenceCard p {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.evidenceCard code,
+pre,
+code {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   MITRE ATT&CK
+   --------------------------------------------------------- */
+
+.mitreCard {
+  font-size: 13px;
+}
+
+.mitreCard h4 {
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.mitreCard b {
+  font-size: 13px;
+}
+
+.mitreCard small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.mitreCard p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   RISK / ANALYTICS
+   --------------------------------------------------------- */
+
+.riskScore,
+.riskValue {
+  font-size: 30px;
+  font-weight: 750;
+}
+
+.riskCard h3,
+.analyticsCard h3 {
+  font-size: 17px;
+}
+
+.riskCard p,
+.analyticsCard p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.riskCard small,
+.analyticsCard small {
+  font-size: 11px;
+}
+
+/* ---------------------------------------------------------
+   AI ASSISTANT
+   --------------------------------------------------------- */
+
+.assistant,
+.assistantPage {
+  font-size: 14px;
+}
+
+.chatMessage {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.chatMessage small {
+  font-size: 10px;
+}
+
+.chatInput,
+.chatInput input,
+.chatInput textarea {
+  font-size: 13px;
+}
+
+.quickAction,
+.quickActions button {
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   REPORTS
+   --------------------------------------------------------- */
+
+.reportDocument {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.reportDocument h1 {
+  font-size: 25px;
+}
+
+.reportDocument h2 {
+  font-size: 19px;
+}
+
+.reportDocument h3 {
+  font-size: 16px;
+}
+
+.reportDocument p,
+.reportDocument li {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.reportDocument small {
+  font-size: 10px;
+}
+
+/* ---------------------------------------------------------
+   COMPLIANCE
+   --------------------------------------------------------- */
+
+.complianceHero {
+  font-size: 13px;
+}
+
+.complianceHero h2 {
+  font-size: 22px;
+}
+
+.complianceHero h3 {
+  font-size: 17px;
+}
+
+.complianceHero p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.complianceHero small {
+  font-size: 10px;
+}
+
+/* ---------------------------------------------------------
+   SETTINGS
+   --------------------------------------------------------- */
+
+.settings,
+.settingsPage {
+  font-size: 14px;
+}
+
+.settings label {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.settings input,
+.settings select,
+.settings textarea {
+  font-size: 13px;
+}
+
+.settings small {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+/* ---------------------------------------------------------
+   AUTH — LOGIN / SIGNUP
+   --------------------------------------------------------- */
+
+.auth {
+  font-size: 14px;
+}
+
+.auth h1 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.auth h2 {
+  font-size: 20px;
+}
+
+.auth p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.auth label {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.auth input {
+  font-size: 13px;
+}
+
+.auth button {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   EMPTY / ERROR STATES
+   --------------------------------------------------------- */
+
+.empty,
+.error,
+.emptyState,
+.errorState {
+  font-size: 13px;
+}
+
+.empty h3,
+.error h3 {
+  font-size: 17px;
+}
+
+.empty p,
+.error p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   MUTED TEXT
+   --------------------------------------------------------- */
+
+.muted {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------
+   LARGE DESKTOP
+   --------------------------------------------------------- */
+
+@media (min-width: 1600px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .panelhead h3 {
+    font-size: 18px;
+  }
+
+  .table .tr:not(.th) {
+    font-size: 13px;
+    min-height: 54px;
+  }
+
+  .table .mono {
+    font-size: 13px;
+  }
+
+  .recentList button b {
+    font-size: 14px;
+  }
+
+  .recentList button small {
+    font-size: 12px;
+  }
+
+  .actionlist button {
+    font-size: 13px;
+  }
+
+  .mitreCard h4 {
+    font-size: 16px;
+  }
+
+  .mitreCard p {
+    font-size: 13px;
+  }
+
+  .reportDocument {
+    font-size: 14px;
+  }
+
+  .reportDocument p,
+  .reportDocument li {
+    font-size: 14px;
+  }
+}
+
+/* ---------------------------------------------------------
+   VERY LARGE DESKTOP
+   --------------------------------------------------------- */
+
+@media (min-width: 1900px) {
+
+  .pageintro h1 {
+    font-size: 36px;
+  }
+
+  .panelhead h3 {
+    font-size: 19px;
+  }
+
+  .stat strong {
+    font-size: 31px;
+  }
+
+  .table .tr:not(.th) {
+    font-size: 13px;
+    min-height: 58px;
+  }
+
+  .table .mono {
+    font-size: 13px;
+  }
+
+  .actionlist button {
+    font-size: 13px;
+    min-height: 52px;
+  }
+}
+
+/* ---------------------------------------------------------
+   MOBILE — KEEP READABLE WITHOUT OVERFLOW
+   --------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .pageintro h1 {
+    font-size: 28px;
+  }
+
+  .panelhead h3 {
+    font-size: 16px;
+  }
+
+  .stat strong {
+    font-size: 25px;
+  }
+
+  .table .tr:not(.th) {
+    font-size: 12px;
+  }
+
+  .table .mono {
+    font-size: 11px;
+  }
+
+  .recentList button b {
+    font-size: 12px;
+  }
+
+  .actionlist button {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   CLOCKGUARD — GLOBAL TYPOGRAPHY UPGRADE
+   ALL PAGES / ALL MODULES
+   ========================================================= */
+
+/* ---------- GLOBAL ---------- */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.page {
+  font-size: 14px;
+}
+
+p {
+  line-height: 1.55;
+}
+
+small {
+  line-height: 1.4;
+}
+
+.muted {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   SIDEBAR / NAVIGATION
+   ========================================================= */
+
+.sidebar {
+  font-size: 14px;
+}
+
+.sidebar .brand {
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.sidebar nav a,
+.sidebar nav button {
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.sidebar nav a span,
+.sidebar nav button span {
+  font-size: 13px;
+}
+
+.sidebar small,
+.sidebar .section-title,
+.sidebar .nav-title {
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: .7px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.topbar {
+  font-size: 13px;
+}
+
+.topbar button,
+.topbar a,
+.topbar span {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   PAGE HEADERS
+   ========================================================= */
+
+.pageintro h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 750;
+  letter-spacing: -.6px;
+}
+
+.pageintro h2 {
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.pageintro p {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.eyebrow {
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 1.1px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel {
+  font-size: 14px;
+}
+
+.panelhead h3 {
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.panelhead small {
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.panelhead {
+  margin-bottom: 17px;
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.statlabel {
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 650;
+}
+
+.stat strong {
+  font-size: 29px;
+  line-height: 1.1;
+  font-weight: 750;
+}
+
+.stat small {
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+  font-family: inherit;
+}
+
+button,
+.btn,
+.ghost,
+.seg,
+.linkAction {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+button b {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   INCIDENTS PAGE
+   ========================================================= */
+
+.incidentsPage,
+.incidents,
+.incidentPage,
+.incidentList,
+.incidentTable {
+  font-size: 14px;
+}
+
+.incidentsPage h1,
+.incidents h1 {
+  font-size: 34px;
+}
+
+.incidentsPage p,
+.incidents p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.incidentId {
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.incidentId,
+.incident-id,
+.incident_id,
+.mono {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TABLES — IMPORTANT FOR INCIDENT IDs
+   ========================================================= */
+
+.table {
+  font-size: 12px;
+}
+
+.table .tr {
+  font-size: 12px;
+  line-height: 1.45;
+  min-height: 50px;
+}
+
+.table .tr.th {
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: .8px;
+  font-weight: 750;
+}
+
+.table .mono {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.table .risk {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.table .badge {
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.badge {
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: .35px;
+  padding: 5px 8px;
+}
+
+
+/* =========================================================
+   INVESTIGATION PAGE
+   ========================================================= */
+
+.investigationPage,
+.investigation,
+.investigationWorkspace {
+  font-size: 14px;
+}
+
+.investigationPage h1,
+.investigation h1 {
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.investigationPage h2,
+.investigation h2 {
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.investigationPage h3,
+.investigation h3 {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.investigationPage h4,
+.investigation h4 {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.investigationPage p,
+.investigation p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.incidentHeader h2,
+.incidentHeader h3 {
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.incidentHeader small {
+  font-size: 11px;
+}
+
+.incidentHeader p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.investStats > div strong {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.investStats > div small {
+  font-size: 11px;
+}
+
+.investStats > div span {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ATTACK PATH
+   ========================================================= */
+
+.attackPathPage,
+.attackpathPage,
+.attackPath,
+.attackpath {
+  font-size: 14px;
+}
+
+.attackPathPage h1,
+.attackpathPage h1,
+.attackPath h1,
+.attackpath h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.attackPathPage h2,
+.attackpathPage h2,
+.attackPath h2,
+.attackpath h2 {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.attackPathPage h3,
+.attackpathPage h3,
+.attackPath h3,
+.attackpath h3 {
+  font-size: 17px;
+}
+
+.attackPathPage p,
+.attackpathPage p,
+.attackPath p,
+.attackpath p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.attacknode b {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.attacknode small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.attacknode > span {
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.attackarrow {
+  font-size: 18px;
+}
+
+.graphnote {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   ATTACK PATH / INTELLIGENCE SVG
+   ========================================================= */
+
+.attackgraph,
+.attackGraph,
+.intelligenceGraph {
+  font-size: 13px;
+}
+
+.attackgraph text,
+.attackGraph text,
+.intelligenceGraph text {
+  font-size: 12px;
+}
+
+.attackgraph .svgnum,
+.attackGraph .svgnum,
+.intelligenceGraph .svgnum {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.attackgraph .svgtxt,
+.attackGraph .svgtxt,
+.intelligenceGraph .svgtxt {
+  font-size: 10px;
+}
+
+.attackgraph .svgcenter,
+.attackGraph .svgcenter,
+.intelligenceGraph .svgcenter {
+  font-size: 10px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   MITRE ATT&CK
+   ========================================================= */
+
+.mitrePage,
+.mitre,
+.mitreAttackPage,
+.mitreExplorer {
+  font-size: 14px;
+}
+
+.mitrePage h1,
+.mitre h1,
+.mitreAttackPage h1,
+.mitreExplorer h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.mitrePage h2,
+.mitre h2,
+.mitreAttackPage h2,
+.mitreExplorer h2 {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.mitrePage h3,
+.mitre h3,
+.mitreAttackPage h3,
+.mitreExplorer h3 {
+  font-size: 17px;
+}
+
+.mitreCard {
+  font-size: 13px;
+}
+
+.mitreCard h4 {
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.mitreCard b {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.mitreCard small {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.mitreCard p {
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.mitreCard code,
+.mitreCard .mono {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   NIST INCIDENT RESPONSE
+   ========================================================= */
+
+.nistPage,
+.nistFrameworkPage,
+.nistIncidentPage,
+.nistResponse,
+.nistFramework {
+  font-size: 14px;
+}
+
+.nistPage h1,
+.nistFrameworkPage h1,
+.nistIncidentPage h1,
+.nistResponse h1,
+.nistFramework h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.nistPage h2,
+.nistFrameworkPage h2,
+.nistIncidentPage h2,
+.nistResponse h2,
+.nistFramework h2 {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.nistPage h3,
+.nistFrameworkPage h3,
+.nistIncidentPage h3,
+.nistResponse h3,
+.nistFramework h3 {
+  font-size: 17px;
+}
+
+.nistFramework > div {
+  font-size: 14px;
+}
+
+.nistFramework > div b {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.nistFramework > div small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.nistFramework > div p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.nistflow > div b {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.nistflow > div small {
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.phasebox small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 750;
+}
+
+.phasebox b {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.phasebox p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   RESPONSE TIMELINE
+   ========================================================= */
+
+.timelinePage,
+.responseTimeline,
+.timelinePageContent,
+.timeline {
+  font-size: 14px;
+}
+
+.timelinePage h1,
+.responseTimeline h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.timelinePage h2,
+.responseTimeline h2 {
+  font-size: 22px;
+}
+
+.timelinePage h3,
+.responseTimeline h3 {
+  font-size: 17px;
+}
+
+.timeline b {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.timeline small {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.timeline p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.timeline code,
+.timeline .mono {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   THREAT ANALYTICS
+   ========================================================= */
+
+.analyticsPage,
+.analytics,
+.threatAnalytics,
+.threatPage,
+.threatLandscape {
+  font-size: 14px;
+}
+
+.analyticsPage h1,
+.analytics h1,
+.threatAnalytics h1,
+.threatPage h1,
+.threatLandscape h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.analyticsPage h2,
+.analytics h2,
+.threatAnalytics h2,
+.threatPage h2,
+.threatLandscape h2 {
+  font-size: 22px;
+}
+
+.analyticsPage h3,
+.analytics h3,
+.threatAnalytics h3,
+.threatPage h3,
+.threatLandscape h3 {
+  font-size: 17px;
+}
+
+.analyticsPage p,
+.analytics p,
+.threatAnalytics p,
+.threatPage p,
+.threatLandscape p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.analyticsCard h3 {
+  font-size: 17px;
+}
+
+.analyticsCard p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.analyticsCard small {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   KNOWLEDGE BASE
+   ========================================================= */
+
+.knowledgePage,
+.knowledgeBase,
+.knowledgeGrid,
+.knowledge {
+  font-size: 14px;
+}
+
+.knowledgePage h1,
+.knowledgeBase h1,
+.knowledge h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.knowledgePage h2,
+.knowledgeBase h2,
+.knowledge h2 {
+  font-size: 22px;
+}
+
+.knowledgePage h3,
+.knowledgeBase h3,
+.knowledge h3 {
+  font-size: 17px;
+}
+
+.knowledgeGrid > div,
+.knowledgeCard {
+  font-size: 13px;
+}
+
+.knowledgeGrid h4,
+.knowledgeCard h4 {
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.knowledgeGrid p,
+.knowledgeCard p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.knowledgeGrid small,
+.knowledgeCard small {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   AI INVESTIGATION
+   ========================================================= */
+
+.aiInvestigationPage,
+.aiInvestigation,
+.aiInvestigationPageContent {
+  font-size: 14px;
+}
+
+.aiInvestigationPage h1,
+.aiInvestigation h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.aiInvestigationPage h2,
+.aiInvestigation h2 {
+  font-size: 22px;
+}
+
+.aiInvestigationPage h3,
+.aiInvestigation h3 {
+  font-size: 17px;
+}
+
+.aiInvestigationPage p,
+.aiInvestigation p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   AI ASSISTANT
+   ========================================================= */
+
+.assistant,
+.assistantPage,
+.aiAssistant,
+.aiAssistantPage {
+  font-size: 14px;
+}
+
+.assistant h1,
+.assistantPage h1,
+.aiAssistant h1,
+.aiAssistantPage h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.assistant h2,
+.assistantPage h2,
+.aiAssistant h2,
+.aiAssistantPage h2 {
+  font-size: 22px;
+}
+
+.assistant h3,
+.assistantPage h3,
+.aiAssistant h3,
+.aiAssistantPage h3 {
+  font-size: 17px;
+}
+
+.chatMessage {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.chatMessage small {
+  font-size: 10px;
+}
+
+.chatInput,
+.chatInput input,
+.chatInput textarea {
+  font-size: 13px;
+}
+
+.quickAction,
+.quickActions button {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   COMPLIANCE
+   ========================================================= */
+
+.compliancePage,
+.compliance,
+.complianceCenter {
+  font-size: 14px;
+}
+
+.compliancePage h1,
+.compliance h1,
+.complianceCenter h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.compliancePage h2,
+.compliance h2,
+.complianceCenter h2 {
+  font-size: 22px;
+}
+
+.compliancePage h3,
+.compliance h3,
+.complianceCenter h3 {
+  font-size: 17px;
+}
+
+.complianceHero {
+  font-size: 13px;
+}
+
+.complianceHero h2 {
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.complianceHero h3 {
+  font-size: 18px;
+}
+
+.complianceHero p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.complianceHero small {
+  font-size: 10px;
+}
+
+.complianceHero b {
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   REPORTS
+   ========================================================= */
+
+.reportsPage,
+.reports,
+.reportPage {
+  font-size: 14px;
+}
+
+.reportsPage h1,
+.reports h1,
+.reportPage h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.reportsPage h2,
+.reports h2,
+.reportPage h2 {
+  font-size: 22px;
+}
+
+.reportsPage h3,
+.reports h3,
+.reportPage h3 {
+  font-size: 17px;
+}
+
+.reportDocument {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.reportDocument h1 {
+  font-size: 27px;
+  line-height: 1.2;
+}
+
+.reportDocument h2 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.reportDocument h3 {
+  font-size: 17px;
+}
+
+.reportDocument p,
+.reportDocument li {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.reportDocument small {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   RISK / EXPLAINABLE RISK
+   ========================================================= */
+
+.riskPage,
+.risk,
+.riskAnalysis {
+  font-size: 14px;
+}
+
+.riskPage h1,
+.risk h1,
+.riskAnalysis h1 {
+  font-size: 34px;
+}
+
+.riskPage h2,
+.risk h2,
+.riskAnalysis h2 {
+  font-size: 22px;
+}
+
+.riskPage h3,
+.risk h3,
+.riskAnalysis h3 {
+  font-size: 17px;
+}
+
+.riskScore,
+.riskValue {
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 750;
+}
+
+.riskCard h3 {
+  font-size: 17px;
+}
+
+.riskCard p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.riskCard small {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SETTINGS / SYSTEM
+   ========================================================= */
+
+.settings,
+.settingsPage,
+.systemPage,
+.system,
+.systemSettings {
+  font-size: 14px;
+}
+
+.settings h1,
+.settingsPage h1,
+.systemPage h1,
+.system h1 {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.settings h2,
+.settingsPage h2,
+.systemPage h2,
+.system h2 {
+  font-size: 22px;
+}
+
+.settings h3,
+.settingsPage h3,
+.systemPage h3,
+.system h3 {
+  font-size: 17px;
+}
+
+.settings label,
+.system label {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.settings input,
+.settings select,
+.settings textarea,
+.system input,
+.system select,
+.system textarea {
+  font-size: 13px;
+}
+
+.settings small,
+.system small {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.settings p,
+.system p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   AUTH / LOGIN / SIGNUP
+   ========================================================= */
+
+.auth {
+  font-size: 14px;
+}
+
+.auth h1 {
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.auth h2 {
+  font-size: 21px;
+}
+
+.auth p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.auth label {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.auth input {
+  font-size: 14px;
+}
+
+.auth button {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY / ERROR
+   ========================================================= */
+
+.empty,
+.error,
+.emptyState,
+.errorState {
+  font-size: 13px;
+}
+
+.empty h3,
+.error h3,
+.emptyState h3,
+.errorState h3 {
+  font-size: 18px;
+}
+
+.empty p,
+.error p,
+.emptyState p,
+.errorState p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   CHART LEGENDS
+   ========================================================= */
+
+.chartlegend {
+  font-size: 12px;
+}
+
+.chartlegend span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.donut b {
+  font-size: 25px;
+  line-height: 1;
+}
+
+.donut span {
+  font-size: 11px;
+}
+
+.legend {
+  font-size: 12px;
+}
+
+.legend span {
+  font-size: 12px;
+}
+
+.legend b {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.barrow > div {
+  font-size: 12px;
+}
+
+.barrow span {
+  font-size: 12px;
+}
+
+.barrow b {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1600px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .pageintro h1 {
+    font-size: 36px;
+  }
+
+  .panelhead h3 {
+    font-size: 18px;
+  }
+
+  .table .tr:not(.th) {
+    font-size: 13px;
+    min-height: 54px;
+  }
+
+  .table .mono {
+    font-size: 13px;
+  }
+
+  .recentList button b {
+    font-size: 14px;
+  }
+
+  .recentList button small {
+    font-size: 12px;
+  }
+
+  .actionlist button {
+    font-size: 13px;
+  }
+
+  .mitreCard h4 {
+    font-size: 16px;
+  }
+
+  .mitreCard p {
+    font-size: 13px;
+  }
+
+  .reportDocument {
+    font-size: 15px;
+  }
+
+  .reportDocument p,
+  .reportDocument li {
+    font-size: 14px;
+  }
+
+  .knowledgeCard p,
+  .knowledgeGrid p {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1900px) {
+
+  .pageintro h1 {
+    font-size: 38px;
+  }
+
+  .panelhead h3 {
+    font-size: 19px;
+  }
+
+  .stat strong {
+    font-size: 31px;
+  }
+
+  .table .tr:not(.th) {
+    font-size: 13px;
+    min-height: 58px;
+  }
+
+  .table .mono {
+    font-size: 13px;
+  }
+
+  .actionlist button {
+    font-size: 13px;
+    min-height: 52px;
+  }
+
+  .mitreCard h4 {
+    font-size: 17px;
+  }
+
+  .nistFramework > div b {
+    font-size: 18px;
+  }
+
+  .reportDocument p,
+  .reportDocument li {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  .pageintro h1 {
+    font-size: 28px;
+  }
+
+  .pageintro h2 {
+    font-size: 21px;
+  }
+
+  .panelhead h3 {
+    font-size: 16px;
+  }
+
+  .stat strong {
+    font-size: 25px;
+  }
+
+  .table .tr:not(.th) {
+    font-size: 12px;
+  }
+
+  .table .mono {
+    font-size: 11px;
+  }
+
+  .recentList button b {
+    font-size: 12px;
+  }
+
+  .recentList button small {
+    font-size: 11px;
+  }
+
+  .actionlist button {
+    font-size: 12px;
+  }
+
+  .mitreCard h4 {
+    font-size: 15px;
+  }
+
+  .mitreCard p {
+    font-size: 12px;
+  }
+
+  .nistFramework > div b {
+    font-size: 16px;
+  }
+
+  .timeline b {
+    font-size: 13px;
+  }
+
+  .timeline p {
+    font-size: 12px;
+  }
+
+  .reportDocument p,
+  .reportDocument li {
+    font-size: 13px;
+  }
+}
+/* =========================================================
+   CLOCKGUARD — MITRE ATT&CK EXPLORER TYPOGRAPHY FIX
+   ========================================================= */
+
+/* Main MITRE page content */
+.mitrePage,
+.mitreExplorer,
+.mitreAttackPage,
+.mitre {
+  font-size: 15px;
+}
+
+/* "ADVERSARY KNOWLEDGE" */
+.mitrePage .eyebrow,
+.mitreExplorer .eyebrow,
+.mitreAttackPage .eyebrow,
+.mitre .eyebrow {
+  font-size: 12px !important;
+  line-height: 1.4;
+  letter-spacing: 1.2px;
+  font-weight: 800;
+}
+
+/* MITRE ATT&CK Explorer */
+.mitrePage h1,
+.mitreExplorer h1,
+.mitreAttackPage h1,
+.mitre h1 {
+  font-size: 36px !important;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -.7px;
+}
+
+/* Description */
+.mitrePage > p,
+.mitreExplorer > p,
+.mitreAttackPage > p,
+.mitre > p,
+.mitrePage .pageintro p,
+.mitreExplorer .pageintro p {
+  font-size: 15px !important;
+  line-height: 1.6;
+}
+
+/* Selected incident ID */
+.mitrePage .incidentId,
+.mitreExplorer .incidentId,
+.mitreAttackPage .incidentId,
+.mitre .incidentId,
+.mitrePage .mono,
+.mitreExplorer .mono {
+  font-size: 14px !important;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+/* ATT&CK Tactic Surface heading */
+.mitrePage h2,
+.mitreExplorer h2,
+.mitreAttackPage h2,
+.mitre h2 {
+  font-size: 22px !important;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+/* Tactic cards */
+.mitrePage .mitreGrid,
+.mitreExplorer .mitreGrid,
+.mitreAttackPage .mitreGrid,
+.mitre .mitreGrid {
+  font-size: 14px;
+}
+
+/* Tactic number — 01, 02, 03... */
+.mitrePage .mitreCard > span,
+.mitreExplorer .mitreCard > span,
+.mitreAttackPage .mitreCard > span,
+.mitre .mitreCard > span {
+  font-size: 13px !important;
+  font-weight: 800;
+}
+
+/* Tactic title — Reconnaissance, Execution, etc. */
+.mitrePage .mitreCard h3,
+.mitreExplorer .mitreCard h3,
+.mitreAttackPage .mitreCard h3,
+.mitre .mitreCard h3 {
+  font-size: 17px !important;
+  line-height: 1.35;
+  font-weight: 750;
+}
+
+/* "2 mapped" / "No evidence" */
+.mitrePage .mitreCard small,
+.mitreExplorer .mitreCard small,
+.mitreAttackPage .mitreCard small,
+.mitre .mitreCard small {
+  font-size: 12px !important;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+/* Technique ID — T1590.002 */
+.mitrePage .mitreCard code,
+.mitreExplorer .mitreCard code,
+.mitreAttackPage .mitreCard code,
+.mitre .mitreCard code {
+  font-size: 13px !important;
+  line-height: 1.4;
+  font-weight: 750;
+}
+
+/* Technique name */
+.mitrePage .mitreCard b,
+.mitreExplorer .mitreCard b,
+.mitreAttackPage .mitreCard b,
+.mitre .mitreCard b {
+  font-size: 14px !important;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+/* Any technique row */
+.mitrePage .mitreCard div,
+.mitreExplorer .mitreCard div,
+.mitreAttackPage .mitreCard div,
+.mitre .mitreCard div {
+  font-size: 14px;
+}
+
+/* Specifically mapped technique text */
+.mitrePage .mitreCard a,
+.mitreExplorer .mitreCard a,
+.mitreAttackPage .mitreCard a,
+.mitre .mitreCard a {
+  font-size: 14px !important;
+  line-height: 1.45;
+}
+
+/* No evidence */
+.mitrePage .mitreCard em,
+.mitreExplorer .mitreCard em,
+.mitreAttackPage .mitreCard em,
+.mitre .mitreCard em {
+  font-size: 12px !important;
+  line-height: 1.4;
+}
+
+/* Card itself */
+.mitrePage .mitreCard,
+.mitreExplorer .mitreCard,
+.mitreAttackPage .mitreCard,
+.mitre .mitreCard {
+  font-size: 14px !important;
+}
+
+
+/* =========================================================
+   IF MITRE CARDS USE DIFFERENT INNER STRUCTURE
+   ========================================================= */
+
+.mitreGrid > div {
+  font-size: 14px;
+}
+
+.mitreGrid > div h3,
+.mitreGrid > div h4 {
+  font-size: 17px !important;
+  line-height: 1.35;
+}
+
+.mitreGrid > div small {
+  font-size: 12px !important;
+}
+
+.mitreGrid > div b {
+  font-size: 14px !important;
+}
+
+.mitreGrid > div code {
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+   ========================================================= */
+
+@media (min-width: 1600px) {
+
+  .mitrePage h1,
+  .mitreExplorer h1,
+  .mitreAttackPage h1,
+  .mitre h1 {
+    font-size: 38px !important;
+  }
+
+  .mitrePage h2,
+  .mitreExplorer h2,
+  .mitreAttackPage h2,
+  .mitre h2 {
+    font-size: 24px !important;
+  }
+
+  .mitrePage .mitreCard h3,
+  .mitreExplorer .mitreCard h3,
+  .mitreAttackPage .mitreCard h3,
+  .mitre .mitreCard h3 {
+    font-size: 18px !important;
+  }
+
+  .mitrePage .mitreCard b,
+  .mitreExplorer .mitreCard b,
+  .mitreAttackPage .mitreCard b,
+  .mitre .mitreCard b {
+    font-size: 15px !important;
+  }
+
+  .mitrePage .mitreCard small,
+  .mitreExplorer .mitreCard small,
+  .mitreAttackPage .mitreCard small,
+  .mitre .mitreCard small {
+    font-size: 13px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .mitrePage h1,
+  .mitreExplorer h1,
+  .mitreAttackPage h1,
+  .mitre h1 {
+    font-size: 28px !important;
+  }
+
+  .mitrePage h2,
+  .mitreExplorer h2,
+  .mitreAttackPage h2,
+  .mitre h2 {
+    font-size: 19px !important;
+  }
+
+  .mitrePage .mitreCard h3,
+  .mitreExplorer .mitreCard h3,
+  .mitreAttackPage .mitreCard h3,
+  .mitre .mitreCard h3 {
+    font-size: 15px !important;
+  }
+
+  .mitrePage .mitreCard b,
+  .mitreExplorer .mitreCard b,
+  .mitreAttackPage .mitreCard b,
+  .mitre .mitreCard b {
+    font-size: 13px !important;
+  }
+}
+/* =========================================================
+   CLOCKGUARD — RESPONSE TIMELINE TYPOGRAPHY FIX
+   ========================================================= */
+
+.timelinePage,
+.responseTimeline,
+.timelinePageContent,
+.timeline,
+.timelinePanel,
+.responseTimelinePage {
+  font-size: 14px;
+}
+
+/* Page title */
+.timelinePage h1,
+.responseTimeline h1,
+.responseTimelinePage h1 {
+  font-size: 36px !important;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -.6px;
+}
+
+/* Page description */
+.timelinePage p,
+.responseTimeline p,
+.responseTimelinePage p {
+  font-size: 14px !important;
+  line-height: 1.6;
+}
+
+/* Section headings */
+.timelinePage h2,
+.responseTimeline h2,
+.responseTimelinePage h2 {
+  font-size: 22px !important;
+  line-height: 1.3;
+}
+
+.timelinePage h3,
+.responseTimeline h3,
+.responseTimelinePage h3 {
+  font-size: 18px !important;
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   TIMELINE ITEMS
+   ========================================================= */
+
+.timeline {
+  font-size: 14px !important;
+}
+
+/* Timestamp */
+.timeline time,
+.timeline .time,
+.timeline .timestamp,
+.timeline .timelineTime {
+  font-size: 12px !important;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+/* Event title */
+.timeline b,
+.timeline strong,
+.timeline .eventTitle,
+.timeline .timelineTitle {
+  font-size: 15px !important;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+/* Event description */
+.timeline p,
+.timeline .eventDescription,
+.timeline .timelineDescription {
+  font-size: 13px !important;
+  line-height: 1.6;
+}
+
+/* Secondary information */
+.timeline small,
+.timeline .meta,
+.timeline .eventMeta {
+  font-size: 11px !important;
+  line-height: 1.45;
+}
+
+/* Incident ID */
+.timeline .mono,
+.timeline code,
+.timeline .incidentId,
+.timeline .incident-id,
+.timeline .incident_id {
+  font-size: 12px !important;
+  line-height: 1.45;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   EVIDENCE / COMMAND / ATTACK DETAILS
+   ========================================================= */
+
+.timeline .evidence,
+.timeline .evidenceCard,
+.timeline .eventCard {
+  font-size: 13px !important;
+}
+
+.timeline .evidenceCard h4,
+.timeline .eventCard h4 {
+  font-size: 15px !important;
+  line-height: 1.35;
+}
+
+.timeline .evidenceCard p,
+.timeline .eventCard p {
+  font-size: 13px !important;
+  line-height: 1.6;
+}
+
+.timeline pre,
+.timeline code,
+.timeline .command,
+.timeline .commandText {
+  font-size: 12px !important;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   MITRE / NIST INFORMATION INSIDE TIMELINE
+   ========================================================= */
+
+.timeline .badge {
+  font-size: 10px !important;
+  line-height: 1.2;
+  font-weight: 750;
+  padding: 5px 8px;
+}
+
+.timeline .mitre,
+.timeline .mitreInfo,
+.timeline .mitreTechnique {
+  font-size: 13px !important;
+}
+
+.timeline .mitreTechnique b,
+.timeline .mitreTechnique strong {
+  font-size: 13px !important;
+}
+
+.timeline .nist,
+.timeline .nistInfo,
+.timeline .nistPhase {
+  font-size: 13px !important;
+}
+
+.timeline .nist b,
+.timeline .nist strong {
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   TIMELINE NODE / NUMBER
+   ========================================================= */
+
+.timeline .node,
+.timeline .timelineNode,
+.timeline .stepNumber {
+  font-size: 12px !important;
+  font-weight: 750;
+}
+
+.timeline .nodeLabel,
+.timeline .stepLabel {
+  font-size: 12px !important;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1600px) {
+
+  .timelinePage h1,
+  .responseTimeline h1,
+  .responseTimelinePage h1 {
+    font-size: 38px !important;
+  }
+
+  .timelinePage h2,
+  .responseTimeline h2,
+  .responseTimelinePage h2 {
+    font-size: 24px !important;
+  }
+
+  .timeline b,
+  .timeline strong,
+  .timeline .eventTitle,
+  .timeline .timelineTitle {
+    font-size: 16px !important;
+  }
+
+  .timeline p,
+  .timeline .eventDescription,
+  .timeline .timelineDescription {
+    font-size: 14px !important;
+  }
+
+  .timeline .mono,
+  .timeline code,
+  .timeline .incidentId,
+  .timeline .incident-id {
+    font-size: 13px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .timelinePage h1,
+  .responseTimeline h1,
+  .responseTimelinePage h1 {
+    font-size: 28px !important;
+  }
+
+  .timelinePage h2,
+  .responseTimeline h2,
+  .responseTimelinePage h2 {
+    font-size: 19px !important;
+  }
+
+  .timeline b,
+  .timeline strong,
+  .timeline .eventTitle,
+  .timeline .timelineTitle {
+    font-size: 14px !important;
+  }
+
+  .timeline p,
+  .timeline .eventDescription,
+  .timeline .timelineDescription {
+    font-size: 12px !important;
+  }
+
+  .timeline .mono,
+  .timeline code,
+  .timeline .incidentId,
+  .timeline .incident-id {
+    font-size: 11px !important;
+  }
+}
+/* =========================================================
+   CLOCKGUARD — FINAL READABILITY FIX
+   MITRE + RESPONSE TIMELINE + AI ASSISTANT
+   ========================================================= */
+
+/* =========================================================
+   1. MITRE ATT&CK — FORCE READABLE CONTENT
+   ========================================================= */
+
+/* Main MITRE page */
+[class*="mitre"],
+[id*="mitre"] {
+  font-size: 14px;
+}
+
+/* Main headings */
+[class*="mitre"] h1,
+[id*="mitre"] h1 {
+  font-size: 36px !important;
+  line-height: 1.2 !important;
+  font-weight: 750 !important;
+}
+
+[class*="mitre"] h2,
+[id*="mitre"] h2 {
+  font-size: 23px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+
+[class*="mitre"] h3,
+[id*="mitre"] h3 {
+  font-size: 18px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+[class*="mitre"] h4,
+[id*="mitre"] h4 {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+}
+
+/* All normal MITRE text */
+[class*="mitre"] p,
+[class*="mitre"] span,
+[class*="mitre"] label {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* Strong text / technique names */
+[class*="mitre"] b,
+[class*="mitre"] strong {
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+  font-weight: 700 !important;
+}
+
+/* Technique IDs */
+[class*="mitre"] code,
+[class*="mitre"] .mono {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  font-weight: 700 !important;
+}
+
+/* Small labels */
+[class*="mitre"] small {
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+/* Buttons */
+[class*="mitre"] button {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+/* Tactic cards */
+[class*="mitre"] > div,
+[class*="mitre"] section,
+[class*="mitre"] article {
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   2. RESPONSE TIMELINE — FORCE READABLE CONTENT
+   ========================================================= */
+
+[class*="timeline"],
+[id*="timeline"] {
+  font-size: 14px;
+}
+
+/* Page headings */
+[class*="timeline"] h1,
+[id*="timeline"] h1 {
+  font-size: 36px !important;
+  line-height: 1.2 !important;
+  font-weight: 750 !important;
+}
+
+[class*="timeline"] h2,
+[id*="timeline"] h2 {
+  font-size: 23px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+
+[class*="timeline"] h3,
+[id*="timeline"] h3 {
+  font-size: 18px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+[class*="timeline"] h4,
+[id*="timeline"] h4 {
+  font-size: 16px !important;
+}
+
+/* Timeline event content */
+[class*="timeline"] p,
+[id*="timeline"] p {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+/* Event titles */
+[class*="timeline"] b,
+[class*="timeline"] strong {
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  font-weight: 700 !important;
+}
+
+/* Timestamp / metadata */
+[class*="timeline"] small,
+[id*="timeline"] small {
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+/* IDs / commands / evidence */
+[class*="timeline"] code,
+[class*="timeline"] pre,
+[class*="timeline"] .mono {
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+}
+
+/* Timeline buttons */
+[class*="timeline"] button,
+[id*="timeline"] button {
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   3. AI ASSISTANT — FORCE READABLE CONTENT
+   ========================================================= */
+
+/* Covers Assistant / AIAssistant / ai-assistant etc. */
+[class*="assistant"],
+[id*="assistant"] {
+  font-size: 14px;
+}
+
+/* Main title */
+[class*="assistant"] h1,
+[id*="assistant"] h1 {
+  font-size: 36px !important;
+  line-height: 1.2 !important;
+  font-weight: 750 !important;
+}
+
+/* Section headings */
+[class*="assistant"] h2,
+[id*="assistant"] h2 {
+  font-size: 23px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+
+[class*="assistant"] h3,
+[id*="assistant"] h3 {
+  font-size: 18px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+[class*="assistant"] h4 {
+  font-size: 16px !important;
+}
+
+
+/* Chat messages */
+[class*="assistant"] p,
+[id*="assistant"] p {
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+
+/* Chat text */
+[class*="assistant"] span,
+[id*="assistant"] label {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* AI answer / message */
+[class*="assistant"] b,
+[class*="assistant"] strong {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Message metadata */
+[class*="assistant"] small,
+[id*="assistant"] small {
+  font-size: 11px !important;
+}
+
+/* Input */
+[class*="assistant"] input,
+[class*="assistant"] textarea,
+[id*="assistant"] input,
+[id*="assistant"] textarea {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Send / action buttons */
+[class*="assistant"] button,
+[id*="assistant"] button {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  font-weight: 650 !important;
+}
+
+/* Quick action buttons */
+[class*="assistant"] .quickAction,
+[class*="assistant"] .quickActions button {
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   4. GENERIC CONTENT INSIDE THESE THREE PAGES
+   ========================================================= */
+
+[class*="mitre"] .panel,
+[class*="timeline"] .panel,
+[class*="assistant"] .panel {
+  font-size: 14px !important;
+}
+
+[class*="mitre"] .panelhead h3,
+[class*="timeline"] .panelhead h3,
+[class*="assistant"] .panelhead h3 {
+  font-size: 18px !important;
+}
+
+[class*="mitre"] .panelhead small,
+[class*="timeline"] .panelhead small,
+[class*="assistant"] .panelhead small {
+  font-size: 11px !important;
+}
+
+
+/* =========================================================
+   5. DESKTOP — EVEN MORE READABLE
+   ========================================================= */
+
+@media (min-width: 1600px) {
+
+  [class*="mitre"] h1,
+  [id*="mitre"] h1,
+  [class*="timeline"] h1,
+  [id*="timeline"] h1,
+  [class*="assistant"] h1,
+  [id*="assistant"] h1 {
+    font-size: 38px !important;
+  }
+
+  [class*="mitre"] p,
+  [class*="timeline"] p,
+  [class*="assistant"] p {
+    font-size: 14px !important;
+  }
+
+  [class*="mitre"] b,
+  [class*="mitre"] strong,
+  [class*="timeline"] b,
+  [class*="timeline"] strong,
+  [class*="assistant"] b,
+  [class*="assistant"] strong {
+    font-size: 15px !important;
+  }
+
+  [class*="mitre"] .mono,
+  [class*="mitre"] code,
+  [class*="timeline"] .mono,
+  [class*="timeline"] code {
+    font-size: 13px !important;
+  }
+
+  [class*="assistant"] p {
+    font-size: 15px !important;
+  }
+}
+
+
+/* =========================================================
+   6. MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  [class*="mitre"] h1,
+  [id*="mitre"] h1,
+  [class*="timeline"] h1,
+  [id*="timeline"] h1,
+  [class*="assistant"] h1,
+  [id*="assistant"] h1 {
+    font-size: 28px !important;
+  }
+
+  [class*="mitre"] p,
+  [class*="timeline"] p,
+  [class*="assistant"] p {
+    font-size: 13px !important;
+  }
+
+  [class*="assistant"] input,
+  [class*="assistant"] textarea {
+    font-size: 14px !important;
+  }
+}
